@@ -1,0 +1,48 @@
+@primary-color: #ddd;
+@secondary-color: #ccc;
+
+.player {
+  display: flex;
+  flex-flow: column;
+  margin: 0 0 25px 25px;
+}
+
+.playerInfo {
+  flex-grow: 1;
+  overflow: hidden;
+
+  p {
+    padding: 0;
+    margin: 0 0 1rem;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .playerInfo p {
+    animation: none;
+    margin-bottom: 1rem;
+  }
+}
+
+.playerControls {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+}
+
+.togglePlay {
+  font-size: 2.5rem;
+}
+
+.slider {
+  margin: 0 1rem;
+}
+
+.volumeSlider {
+  font-size: 1.5rem;
+  margin: 0 2rem;
+
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+}

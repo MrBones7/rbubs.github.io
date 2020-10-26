@@ -1,0 +1,61 @@
+@primary-color: #ddd;
+@secondary-color: #ccc;
+
+@import url(https://fonts.googleapis.com/css?family=Raleway:500&family=VT323&display=swap);
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+  min-height: -webkit-fill-available; /* mobile viewport bug fix */
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: 'VT323', monospace;
+  font-size: 1.6rem;
+  line-height: 1.6;
+  color: @primary-color;
+
+  display: flex; 
+  flex-direction: column;
+  margin: 0;
+
+  overflow-y: hidden; /* Hide vertical scrollbar */
+  overflow-x: hidden; /* Hide horizontal scrollbar */
+
+  min-height: 100vh;
+  min-height: -webkit-fill-available; /* mobile viewport bug fix */
+}
+
+.trackLink {
+  color: @primary-color;
+  text-decoration: none;
+
+  &:hover {
+    color: @secondary-color;
+  }
+}
+
+.primaryColor {
+  color: @primary-color;
+}
+
+a, .hoverable {
+  text-decoration: none;
+  -webkit-transition: color 0.5s; /* For Safari 3.0 to 6.0 */
+  transition: color 0.5s; /* For modern browsers */
+  font-family: 'VT323', monospace;
+  color: @primary-color;
+
+  &:hover {
+    cursor: pointer;
+    color: @secondary-color;
+  }
+}

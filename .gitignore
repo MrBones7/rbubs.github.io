@@ -1,0 +1,10 @@
+logs
+*.log
+npm-debug.log*
+node_modules
+storybook-static
+docs
+.eslintcache
+.stylelintcache
+dist
+.DS_Store
