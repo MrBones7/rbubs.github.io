@@ -2,8 +2,6 @@
 
 ![Cover](cover.png)
 
-TBD
-
 This repo is a fork of [react-pages-boilerplate](https://github.com/rtivital/react-pages-boilerplate).
 
 ## Technologies

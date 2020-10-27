@@ -26,7 +26,6 @@ const HomePage = () => (
   <>
     <div className={cx(fullscreen, ui)}>
       <Nav />
-      <Counter />
       <Spacer />
       <Player initialVolume={0.6} stationId={stationId} />
     </div>

@@ -18,6 +18,23 @@ const entry = path.join(__dirname, './src/index.jsx');
 const output = path.join(__dirname, './dist');
 const publicPath = mode === 'production' ? settings.repoPath || '/' : '/';
 
+const productionScripts = `
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-E0MPNFJ7J5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-E0MPNFJ7J5');
+  </script>`;
+
+const developmentScripts = ``;
+
+const thirdPartyScripts = mode === 'production'
+  ? productionScripts
+  : developmentScripts;
+
 module.exports = {
   mode,
 
@@ -167,7 +184,10 @@ module.exports = {
             <meta charset="utf-8">
             <meta http-equiv="X-UA-Compatible" content="IE=edge">
             <meta name="viewport" content="width=device-width, initial-scale = 1.0, maximum-scale=1.0, user-scalable=no" />
+
             <title>${settings.title}</title>
+
+            ${thirdPartyScripts}
           </head>
           <body>
             <noscript>

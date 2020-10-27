@@ -14,9 +14,10 @@ module.exports = {
   // repoPath: '/rebase-radio',
   repoPath: null,
 
-  // Websocket Server for real-time multi-user functionality
+  // Websocket Server for real-time multi-user functionality.
   // websocketServer: ENV === 'production' ? null : 'localhost:3000',
-  websocketServer: ENV === 'production' ? 'coherent-rite-293701.uc.r.appspot.com' : 'localhost:3000',
+  // websocketServer: ENV === 'production' ? 'coherent-rite-293701.uc.r.appspot.com' : 'localhost:3000',
+  websocketServer: null,
 
   // list of routes that should be prerendered
   // list should always contain '/' and '/404' for gh-pages to recognize app
