@@ -187,10 +187,12 @@ module.exports = {
 
             <title>${settings.title}</title>
             <meta name="description" content="${settings.description}" />
+            <meta property="og:site_name" content="${settings.title}" />
             <meta property="og:title" content="${settings.title}" />
             <meta property="og:description" content="${settings.description}" />
             <meta property="og:url" content="https://rebase.radio" />
             <meta property="og:image" content="https://rebase.radio/assets/richpreview.jpg" />
+            <meta name="twitter:image" content="https://rebase.radio/assets/richpreview.jpg" />
 
             ${thirdPartyScripts}
           </head>
