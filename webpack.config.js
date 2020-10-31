@@ -186,6 +186,11 @@ module.exports = {
             <meta name="viewport" content="width=device-width, initial-scale = 1.0, maximum-scale=1.0, user-scalable=no" />
 
             <title>${settings.title}</title>
+            <meta name="description" content="${settings.description}" />
+            <meta property="og:title" content="${settings.title}" />
+            <meta property="og:description" content="${settings.description}" />
+            <meta property="og:url" content="https://rebase.radio" />
+            <meta property="og:image" content="https://rebase.radio/assets/richpreview.jpg" />
 
             ${thirdPartyScripts}
           </head>
