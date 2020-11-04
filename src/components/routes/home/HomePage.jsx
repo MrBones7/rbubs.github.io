@@ -41,9 +41,7 @@ const HomePage = () => (
       <Spacer />
       <Row alignItems="flex-end">
         <Player initialVolume={0.6} stationId={stationId} />
-        <SupportButton link={supportUrl}>
-          Support Us
-        </SupportButton>
+        <SupportButton link={supportUrl} />
       </Row>
     </div>
     <BackgroundVideoPlayer

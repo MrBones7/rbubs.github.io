@@ -193,6 +193,11 @@ module.exports = {
             <meta property="og:url" content="https://rebase.radio" />
             <meta property="og:image" content="https://rebase.radio/assets/richpreview.jpg" />
             <meta name="twitter:image" content="https://rebase.radio/assets/richpreview.jpg" />
+            <meta name="twitter:card" content="summary_large_image" />
+            <meta name="twitter:creator" content="@M7Bones" />
+            <meta name="twitter:site" content="@M7Bones" />
+            <meta name="twitter:title" content="${settings.title}" />
+            <meta name="twitter:description" content="${settings.description}" />
 
             ${thirdPartyScripts}
           </head>
