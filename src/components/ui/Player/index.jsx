@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import queryString from 'query-string';
 import PropTypes from 'prop-types';
 import ReactAudioPlayer from 'react-audio-player';
 import cx from 'classnames';
@@ -7,9 +6,9 @@ import Slider from '@material-ui/core/Slider';
 import { withStyles } from '@material-ui/core/styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay, faPause, faVolumeDown, faVolumeUp } from '@fortawesome/free-solid-svg-icons';
-import { player, playerControls, playerInfo, trackLink, togglePlay, slider, volumeSlider } from './Player.styles.less';
+import PlayerInfo from './PlayerInfo';
+import { player, playerControls, togglePlay, slider, volumeSlider } from './Player.styles.less';
 import { hoverable, primaryColor } from '../../../styles.less';
-import { title as siteTitle } from '../../../../settings';
 
 const StyledSlider = withStyles({
   root: {
@@ -111,57 +110,6 @@ PlayerControls.propTypes = {
   initialVolume: PropTypes.number,
 };
 
-const TrackInfo = ({ title }) => {
-  document.title = `${title} | ${siteTitle}`;
-
-  const params = queryString.stringify({ search_query: title });
-  const searchUrl = `https://www.youtube.com/results?${params}`;
-
-  return (
-    <div>
-      <p><a className={trackLink} href={searchUrl} target="_blank" rel="noopener noreferrer">{title}</a></p>
-    </div>
-  );
-};
-
-TrackInfo.propTypes = {
-  title: PropTypes.string.isRequired,
-  artwork_url: PropTypes.string.isRequired,
-};
-
-const PlayerInfo = ({ statusUrl }) => {
-  const [currentTrack, setCurrentTrack] = useState(null);
-
-  useEffect(() => {
-    const ac = new AbortController();
-    const fetchData = (abortController) => {
-      fetch(statusUrl, { signal: abortController.signal })
-        .then(response => response.json())
-        .then(({ current_track }) => setCurrentTrack(current_track));
-    };
-
-    fetchData(ac);
-    const interval = setInterval(() => fetchData(ac), 5000);
-
-    return () => {
-      clearInterval(interval);
-      ac.abort();
-    };
-  }, []);
-
-  if (!currentTrack) return null;
-
-  return (
-    <div className={playerInfo}>
-      <TrackInfo {...currentTrack} />
-    </div>
-  );
-};
-
-PlayerInfo.propTypes = {
-  statusUrl: PropTypes.string.isRequired,
-};
-
 class Player extends React.Component {
   constructor(props) {
     super(props);
@@ -187,7 +135,6 @@ class Player extends React.Component {
 
     return (
       <div className={player}>
-
         <PlayerInfo statusUrl={radioStatusUrl} />
         <PlayerControls
           onPause={onPause}

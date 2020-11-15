@@ -1,20 +1,13 @@
 import React, { useEffect } from 'react';
-import { v4 as uuidv4 } from 'uuid';
-import cookie from 'react-cookies';
-import { websocketServer } from '../../../../settings';
+import getUserId from '../../../lib/UserId';
 
-const USER_ID_KEY = 'userId';
+import { websocketServer } from '../../../../settings';
 
 const Counter = () => {
   if (!websocketServer) return null;
 
   useEffect(() => {
-    let userId = cookie.load(USER_ID_KEY);
-
-    if (!userId) {
-      userId = uuidv4();
-      cookie.save(USER_ID_KEY, userId);
-    }
+    const userId = getUserId();
 
     const client = new WebSocket(`ws://${websocketServer}`);
     client.onopen = () => {
