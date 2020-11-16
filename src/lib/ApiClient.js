@@ -7,11 +7,10 @@ class ApiClient {
   constructor() {
     this.userId = getUserId();
     this.apiServer = apiServer;
-    this.protocol = 'http';
   }
 
   url(path) {
-    return `${this.protocol}://${this.apiServer}${path}`;
+    return `${this.apiServer}${path}`;
   }
 
   get(path, params) {

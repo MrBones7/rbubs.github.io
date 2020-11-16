@@ -3,12 +3,12 @@ const ENV = process.env.NODE_ENV || 'development';
 const envConfigs = {
   shared: {},
   development: {
-    apiServer: 'localhost:3000',
+    apiServer: 'http://localhost:3000',
     websocketServer: 'localhost:3000',
   },
   production: {
-    apiServer: '157.230.236.159',
-    websocketServer: '157.230.236.159',
+    apiServer: 'https://api.rebase.radio',
+    websocketServer: 'api.rebase.radio',
   },
 };
 
