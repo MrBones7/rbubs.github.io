@@ -7,8 +7,8 @@ const envConfigs = {
     websocketServer: 'localhost:3000',
   },
   production: {
-    apiServer: 'coherent-rite-293701.uc.r.appspot.com',
-    websocketServer: 'coherent-rite-293701.uc.r.appspot.com',
+    apiServer: '157.230.236.159',
+    websocketServer: '157.230.236.159',
   },
 };
 
