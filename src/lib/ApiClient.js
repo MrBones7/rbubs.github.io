@@ -15,12 +15,11 @@ class ApiClient {
 
   get(path, params) {
     const url = `${this.url(path)}?${queryString.stringify(params)}`;
+    const myHeaders = new Headers();
 
     Log.info(`Attempting to GET ${url}`);
 
-    fetch(url, {
-      credentials: 'include',
-    })
+    fetch(url)
       .then(res => res.json())
       .then(res => {
         Log.info('Response: ', res);
@@ -41,7 +40,6 @@ class ApiClient {
         Accept: 'application/json',
         'Content-Type': 'application/json',
       },
-      credentials: 'include',
       body: JSON.stringify(params),
     })
       .then(res => res.json())
@@ -54,10 +52,11 @@ class ApiClient {
   }
 
   recordSongReaction(song, reaction) {
-    this.get('/song-reaction', {
-      ts: Date.now(),
-      s: song,
-      r: reaction,
+    this.post('/song-reaction', {
+      Timestamp: Date.now(),
+      Song: song,
+      Reaction: reaction,
+      ListenerId: this.userId,
     });
   }
 }
