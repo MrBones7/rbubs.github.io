@@ -15,7 +15,6 @@ class ApiClient {
 
   get(path, params) {
     const url = `${this.url(path)}?${queryString.stringify(params)}`;
-    const myHeaders = new Headers();
 
     Log.info(`Attempting to GET ${url}`);
 

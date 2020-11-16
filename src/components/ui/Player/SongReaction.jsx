@@ -6,14 +6,17 @@ import { faThumbsUp, faThumbsDown } from '@fortawesome/free-solid-svg-icons';
 import ApiClient from '../../../lib/ApiClient';
 import { hoverable, primaryColor } from '../../../styles.less';
 
-const SongReaction = ({ title }) => {
+const SongReaction = ({ currentTrack }) => {
+  if (!currentTrack) return null;
+
+  const { title } = currentTrack;
+
   const recordReaction = (direction) => {
     ApiClient.recordSongReaction(title, direction);
   };
 
   return (
     <span>
-      &ensp;
       <FontAwesomeIcon icon={faThumbsUp} className={cx(hoverable, primaryColor)} onClick={() => recordReaction('up')} />
       &ensp;
       <FontAwesomeIcon icon={faThumbsDown} className={cx(hoverable, primaryColor)} onClick={() => recordReaction('down')} />
@@ -22,7 +25,7 @@ const SongReaction = ({ title }) => {
 };
 
 SongReaction.propTypes = {
-  title: PropTypes.string.isRequired,
+  currentTrack: PropTypes.object.isRequired,
 };
 
 export default SongReaction;

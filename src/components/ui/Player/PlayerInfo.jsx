@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import queryString from 'query-string';
 import PropTypes from 'prop-types';
-import { playerInfo, trackLink } from './Player.styles.less';
 import SongReaction from './SongReaction';
+import { playerInfo, trackLink } from './Player.styles.less';
 import { title as siteTitle } from '../../../../settings';
 
 const TrackInfo = ({ title }) => {
@@ -19,41 +19,22 @@ const TrackInfo = ({ title }) => {
 };
 
 TrackInfo.propTypes = {
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string,
 };
 
-const PlayerInfo = ({ statusUrl }) => {
-  const [currentTrack, setCurrentTrack] = useState(null);
-
-  useEffect(() => {
-    const ac = new AbortController();
-    const fetchData = (abortController) => {
-      fetch(statusUrl, { signal: abortController.signal })
-        .then(response => response.json())
-        .then(({ current_track }) => setCurrentTrack(current_track));
-    };
-
-    fetchData(ac);
-    const interval = setInterval(() => fetchData(ac), 5000);
-
-    return () => {
-      clearInterval(interval);
-      ac.abort();
-    };
-  }, []);
-
+const PlayerInfo = ({ currentTrack }) => {
   if (!currentTrack) return null;
 
   return (
     <div className={playerInfo}>
+      <SongReaction currentTrack={currentTrack} />
       <TrackInfo {...currentTrack} />
-      <SongReaction {...currentTrack} />
     </div>
   );
 };
 
 PlayerInfo.propTypes = {
-  statusUrl: PropTypes.string.isRequired,
+  currentTrack: PropTypes.object,
 };
 
 export default PlayerInfo;
