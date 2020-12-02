@@ -15,7 +15,7 @@ const envConfigs = {
 module.exports = {
   // Base application title used in document.title
   title: 'Rebase Radio',
-  description: '',
+  description: 'chill beats to lose all your money to',
 
   // use cname option to add CNAME file to webpack build
   // CNAME file allows to use custom domain names with gh-pages, example:
