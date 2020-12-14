@@ -38,15 +38,19 @@ const VolumeSlider = ({ onChange, initialVolume }) => {
   const [value, setValue] = React.useState(initialVolume * 100.0);
 
   const handleChange = (event, newValue) => {
-    onChange(newValue / 100.0); // volume values must be between 0 and 1
+    const numVolSteps = 20;
+    const volume = newValue / 100.0 * numVolSteps;
+    const normalizedVolume = Math.floor(volume) / Number.parseFloat(numVolSteps);
+
+    onChange(normalizedVolume); // must be a value between 0 and 1, inclusive
     setValue(newValue);
   };
 
   return (
     <div className={volumeSlider}>
-      <FontAwesomeIcon icon={faVolumeDown} className={primaryColor} />
+      <FontAwesomeIcon icon={faVolumeDown} className={cx(primaryColor, hoverable)} onClick={() => handleChange(null, 0.0)} />
       <StyledSlider value={value} className={slider} onChange={handleChange} aria-labelledby="continuous-slider" />
-      <FontAwesomeIcon icon={faVolumeUp} className={primaryColor} />
+      <FontAwesomeIcon icon={faVolumeUp} className={cx(primaryColor, hoverable)} onClick={() => handleChange(null, 100.0)} />
     </div>
   );
 };
