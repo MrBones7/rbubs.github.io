@@ -1,3 +1,4 @@
+.history
 logs
 *.log
 npm-debug.log*
@@ -8,3 +9,4 @@ docs
 .stylelintcache
 dist
 .DS_Store
+coverage
