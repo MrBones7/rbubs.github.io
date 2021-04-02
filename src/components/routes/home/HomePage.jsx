@@ -47,7 +47,7 @@ const videoSrc = [
       subLoop: 'B04_SubLoop',
       subLoopToMainLoop: 'B05_SubLoopToMainLoop',
       exitPrev: 'B06_ExitPrev',
-      exitNext: 'B07_ExitNext'
+      // exitNext: 'B07_ExitNext'
     },
     mainLoopMaxLoops: 6,
     mainLoopMinLoops: 3,       
