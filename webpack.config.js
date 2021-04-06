@@ -15,7 +15,7 @@ const settings = require('./settings');
 const mode = process.env.NODE_ENV === 'production' ? 'production' : 'development';
 const port = 8262;
 const entry = path.join(__dirname, './src/index.jsx');
-const output = path.join(__dirname, './public');
+const output = path.join(__dirname, './public/');
 const publicPath = mode === 'production' ? settings.repoPath || '/' : '/';
 
 const productionScripts = `
