@@ -59,18 +59,17 @@ class BackgroundVideoPlayer extends Component {
     player.addEventListener("canplay", function onCanPlay() {
       player.removeEventListener("canplay", onCanPlay);
       player.play();
+      // short delay to remove potential loading flash between scenes
+      if (this.state.prevPlayer !== undefined) {
+        this.videoTimer = setTimeout(() =>  {
+          prevPlayer = document.querySelector(`.${this.state.prevPlayer}`);
+          if (prevPlayer) {
+            prevPlayer.style.display = "none";
+          }
+        }, 450);
+      }      
     });
     player.load();
-
-    // short delay to remove potential loading flash between scenes
-    if (this.state.prevPlayer !== undefined) {
-      this.videoTimer = setTimeout(() =>  {
-        prevPlayer = document.querySelector(`.${this.state.prevPlayer}`);
-        if (prevPlayer) {
-          prevPlayer.style.display = "none";
-        }
-      }, 350);
-    }
 
     // call handleVideoEnd when each video ends
     player.addEventListener('ended', this.handleVideoEnd, false);   
