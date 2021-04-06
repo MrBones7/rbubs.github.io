@@ -343,10 +343,8 @@ class BackgroundVideoPlayer extends Component {
                     loop={false}
                     muted
                     poster={this.state.currentPosterSrc}
-                    src={[{ src: `../../assets/${this.props.videoSrc[this.props.currentVideoIndex]["scenes"][scene]}.mp4`,
-                        type: 'video/mp4' }, 
-                        { src: `../../assets/${this.props.videoSrc[this.props.currentVideoIndex]["scenes"][scene]}.mp4`,
-                        type: 'video/webm' }]}    
+                    src={[{ src: `${this.props.videoSrc[this.props.currentVideoIndex]["scenes"][scene]}`,
+                        type: 'video/mp4' }]}
                     style={{display: 'none'}}
                   />
                 }

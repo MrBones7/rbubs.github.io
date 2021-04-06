@@ -26,12 +26,20 @@ const videoSrc = [
 //  },
   {
     scenes: {
+      /*
       enter: 'A01_Enter',
       mainLoop: 'A02_MainLoop',
       mainLoopToSubLoop: 'A03_MainLoopToSubLoop',
       subLoop: 'A04_SubLoop',
       subLoopToMainLoop: 'A05_SubLoopToMainLoop',
       exitNext: 'A06_ExitNext'
+      */
+      enter: 'https://streamable.com/l/grln3f/mp4.mp4',
+      mainLoop: 'https://streamable.com/l/p2vd1p/mp4.mp4',
+      mainLoopToSubLoop: 'https://streamable.com/l/gwah5t/mp4.mp4',
+      subLoop: 'https://streamable.com/l/ka1aco/mp4.mp4',
+      subLoopToMainLoop: 'https://streamable.com/l/w7072x/mp4.mp4',
+      exitNext: 'https://streamable.com/l/11noqr/mp4.mp4'      
     }, 
     mainLoopMaxLoops: 6,
     mainLoopMinLoops: 3,       
@@ -41,6 +49,7 @@ const videoSrc = [
   }, 
   {
     scenes: {    
+      /*
       enter: 'B01_Enter',
       mainLoop: 'B02_MainLoop',
       mainLoopToSubLoop: 'B03_MainLoopToSubLoop',
@@ -48,6 +57,14 @@ const videoSrc = [
       subLoopToMainLoop: 'B05_SubLoopToMainLoop',
       exitPrev: 'B06_ExitPrev',
       // exitNext: 'B07_ExitNext'
+      */
+      enter: 'https://streamable.com/l/vn6ai3/mp4.mp4',
+      mainLoop: 'https://streamable.com/l/i9ub0u/mp4.mp4',
+      mainLoopToSubLoop: 'https://streamable.com/l/z5lryo/mp4.mp4',
+      subLoop: 'https://streamable.com/l/ik1s0b/mp4.mp4',
+      subLoopToMainLoop: 'https://streamable.com/l/f3z1xa/mp4.mp4',
+      exitPrev: 'https://streamable.com/l/qe1b4a/mp4.mp4',
+      // exitNext: 'B07_ExitNext'      
     },
     mainLoopMaxLoops: 6,
     mainLoopMinLoops: 3,       
