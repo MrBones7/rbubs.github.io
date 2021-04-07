@@ -156,7 +156,7 @@ const HomePage = () => {
         </Row>
         <Spacer />
         <Row alignItems="flex-end">
-          { /* <!-- <Player initialVolume={0.6} stationId={stationId} /> */ }
+          <Player initialVolume={0.6} stationId={stationId} />
           <div>
             <ExitPrevButton handler={handleExitButton} showExit={showExitPrev} />
             <ExitNextButton handler={handleExitButton} showExit={showExitNext} />
