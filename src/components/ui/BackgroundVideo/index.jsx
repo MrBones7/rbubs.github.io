@@ -14,14 +14,24 @@ const BackgroundVideoPlayer = (props) => {
   // store number of loops for looping scene
   const [loopCount, setLoopCount] = useState(0);
 
+  // play scene
   useEffect(() => {
     if (currentScene.player !== currentScene.prevPlayer) {
       playNextScene();  
     }
-
   }, [currentScene.player, currentScene.prevPlayer]);
 
-  let videoTimer = null;
+  // play looping scene
+  useEffect(() => {
+    if (loopCount > 0 && (currentScene.name === 'mainLoop' || currentScene.name === 'subLoop')) {
+      playLoopScene();
+    }
+
+    if (props.exit !== undefined) {
+      setLoopCount(0);
+    }    
+  }, [loopCount, props.exit]);
+
 
   // display the next current video
   const playNextScene = () => {
@@ -39,21 +49,9 @@ const BackgroundVideoPlayer = (props) => {
     });
     player.load();
 
-    /*
-    // short delay to remove potential loading flash between scenes
-    if (currentScene.prevPlayer !== undefined) {
-      //videoTimer = setTimeout(() =>  {
-        prevPlayer = document.querySelector(`.${currentScene.prevPlayer}`);
-        if (prevPlayer) {
-          prevPlayer.style.display = "none";
-        }
-      //}, 350);
-    } 
-    */
-    
+    // hide the previous player once the next video is playing
     if (currentScene.prevPlayer !== undefined) {
       player.addEventListener("playing", function onPlaying() {
-        console.log('onPlaying');
         player.removeEventListener("playing", onPlaying);
         prevPlayer = document.querySelector(`.${currentScene.prevPlayer}`);
         if (prevPlayer) {
@@ -67,13 +65,12 @@ const BackgroundVideoPlayer = (props) => {
   }
 
   // replay the current scene
-  const playLoopScene = (props) => {
+  const playLoopScene = () => {
+    console.log('Loop', loopCount)
     // DOM handle for the player and wrapper
     var playerWrapper, player, prevPlayer;
     playerWrapper =  document.querySelector(`.${currentScene.player}`);
     player = document.querySelector(`.${currentScene.player} > video`);
-
-    console.log('Loops', loopCount);
     player.play();
 
     // call handleVideoEnd when each video ends
@@ -85,22 +82,24 @@ const BackgroundVideoPlayer = (props) => {
   // defaults to 3 for both min and max
   // loopType {string} - can be 'main' or 'sub'
   const setLoop = (loopType) => {
-    let max, min;
+    if (props.exit === undefined) {
+      let max, min;
 
-    if (loopType === 'main') {
-      max = props.videoSrc[props.currentVideoIndex]["mainLoopMaxLoops"] || 3;
-      min = props.videoSrc[props.currentVideoIndex]["mainLoopMinLoops"] || 3;
-    } else if (loopType === 'sub') {
-      max = props.videoSrc[props.currentVideoIndex]["subLoopMaxLoops"] || 3;
-      min = props.videoSrc[props.currentVideoIndex]["subLoopMinLoops"] || 3;
-    } else {
-      max = 3;
-      min = 3;
+      if (loopType === 'main') {
+        max = props.videoSrc[props.currentVideoIndex]["mainLoopMaxLoops"] || 3;
+        min = props.videoSrc[props.currentVideoIndex]["mainLoopMinLoops"] || 3;
+      } else if (loopType === 'sub') {
+        max = props.videoSrc[props.currentVideoIndex]["subLoopMaxLoops"] || 3;
+        min = props.videoSrc[props.currentVideoIndex]["subLoopMinLoops"] || 3;
+      } else {
+        max = 3;
+        min = 3;
+      }
+
+      min = Math.ceil(min);
+      max = Math.floor(max);
+      setLoopCount(Math.floor(Math.random() * (max - min + 1) + min));  
     }
-
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    setLoopCount(Math.floor(Math.random() * (max - min + 1) + min));  
   }
 
   // check to see if a video exists
@@ -122,8 +121,6 @@ const BackgroundVideoPlayer = (props) => {
       ? (props.currentVideoIndex * 1) + index : 0
 
     props.changeVideoIndex(nextVideoIndex);
-    //const scenes = listScenes();
-    //setSceneList(scenes);
     return nextVideoIndex;
   }
 
@@ -141,9 +138,8 @@ const BackgroundVideoPlayer = (props) => {
           name: 'mainLoop',
           player: `mainLoop_${props.currentVideoIndex}`,
           posterSrc: null,
-          prevPlayer: `${currentScene.player}`
+          prevPlayer: currentScene.player
         });
-
         break;        
       }
 
@@ -175,35 +171,33 @@ const BackgroundVideoPlayer = (props) => {
           }
 
           // loop as many times as specified in loopCount
-          /*if (loopCount > 0 && currentScene.prevPlayer !== currentScene.player) {
+          // cancel the loop if exit is clicked          
+          if (loopCount > 1 && !props.exit) {
             setCurrentScene({ 
-              name: currentScene.name,
-              player: currentScene.player,
-              posterSrc: currentScene.posterSrc,
+              name: 'mainLoop',
+              player: `mainLoop_${props.currentVideoIndex}`,
+              posterSrc: null,
               prevPlayer: currentScene.player
-            }); 
-            //setLoopCount(loopCount - 1);
-            playNextScene();
+            });
+            setLoopCount(count => count - 1);
           // after looping loopCount number of times, transition
-          } else {*/
+          } else {
             // advance to mainLoopToSubLoop
-            const nextScene = 'mainLoopToSubLoop';
-            
-            // set number of loops for sub loop
-            setLoop('sub');
-
             setCurrentScene({ 
-              name: nextScene,
-              player: `${nextScene}_${props.currentVideoIndex}`,  
+              name: 'mainLoopToSubLoop',
+              player: `mainLoopToSubLoop_${props.currentVideoIndex}`,  
               posterSrc: null,
               prevPlayer: currentScene.player
             }); 
-          // }
+          }
         }
         break;    
       }
 
       case "mainLoopToSubLoop": {
+        // set number of loops for sub loop
+        setLoop('sub');
+        
         setCurrentScene({ 
           name: 'subLoop',
           player: `subLoop_${props.currentVideoIndex}`,  
@@ -216,37 +210,30 @@ const BackgroundVideoPlayer = (props) => {
       case "subLoop": {
         // loop as many times as specified in loopCount
         // cancel the loop if exit is clicked
-        /*
         if (loopCount > 1 && !props.exit) {
           setCurrentScene({ 
-            name: currentScene.name,
-            player: currentScene.player,
-            posterSrc: currentScene.posterSrc,
-            prevPlayer: currentScene.player
-          });
-          playLoopScene();
-        // after looping loopCount number of times, transition
-        } else { */
-          // in video sets where subLoopToMainLoop scene does not exist
-          // advance directly to mainLoop
-          // otherwise advance to subLoopToMainLoop
-          const transitionExists = document.querySelector(`.subLoopToMainLoop_${props.currentVideoIndex} > video`);
-          const nextScene = transitionExists ? 'subLoopToMainLoop' : 'mainLoop';
-
-          // set number of loops for main loop
-          setLoop('main'); 
-
-          setCurrentScene({ 
-            name: nextScene,
-            player: `${nextScene}_${props.currentVideoIndex}`,
+            name: 'subLoop',
+            player: `subLoop_${props.currentVideoIndex}`,  
             posterSrc: null,
             prevPlayer: currentScene.player
           });
-        // }
+          setLoopCount(count => count - 1);          
+        // after looping loopCount number of times, transition
+        } else { 
+          setCurrentScene({ 
+            name: 'subLoopToMainLoop',
+            player: `subLoopToMainLoop_${props.currentVideoIndex}`,
+            posterSrc: null,
+            prevPlayer: currentScene.player
+          });
+        }
         break;        
       }
 
       case "subLoopToMainLoop": {
+        // set number of loops for main loop
+        setLoop('main'); 
+
         setCurrentScene({ 
           name: 'mainLoop',
           player: `mainLoop_${props.currentVideoIndex}`,  

@@ -3,14 +3,14 @@ import PropTypes from 'prop-types';
 import VideoPlayer from 'react-background-video-player';
 
 const BackgroundSceneList = (props) => { 
+  // store list of scenes for the current video set
+  const [sceneList, setSceneList] = useState([]);
+
   // creates an array of scenes from a video set, removing any empty scenes
   const listScenes = () => {
     return Object.keys(props.videoSrc[props.currentVideoIndex].scenes)
       .filter(scene => props.videoSrc[props.currentVideoIndex]["scenes"][scene] !== null);
   }
-
-  // store list of scenes for the current video set
-  const [sceneList, setSceneList] = useState([]);
 
   useEffect(() => {
     setSceneList(listScenes());
@@ -62,9 +62,6 @@ const BackgroundSceneList = (props) => {
         {
           sceneList.map(scene => {
             if (scene) {
-              console.log('scene', scene);
-              console.log('`${props.videoSrc[props.currentVideoIndex]["scenes"][scene]}`', `${props.videoSrc[props.currentVideoIndex]["scenes"][scene]}`);
-              
               return <VideoPlayer 
                 autoPlay={false}
                 className={`${scene}_${props.currentVideoIndex}`}
