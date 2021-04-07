@@ -10,6 +10,7 @@ import Nav from '../../ui/Nav';
 import Player from '../../ui/Player';
 import Row from '../../ui/Row';
 import SupportButton from '../../ui/SupportButton';
+import BackgroundSceneList from '../../ui/BackgroundSceneList';
 
 // EDIT THESES VALUES TO SETUP NEW VIDEO SETS
 
@@ -155,7 +156,7 @@ const HomePage = () => {
         </Row>
         <Spacer />
         <Row alignItems="flex-end">
-          <Player initialVolume={0.6} stationId={stationId} />
+          { /* <!-- <Player initialVolume={0.6} stationId={stationId} /> */ }
           <div>
             <ExitPrevButton handler={handleExitButton} showExit={showExitPrev} />
             <ExitNextButton handler={handleExitButton} showExit={showExitNext} />
@@ -163,6 +164,7 @@ const HomePage = () => {
           <SupportButton link={currentSceneNft} />
         </Row>
       </div>
+
       <BackgroundVideoPlayer
         videoSrc={videoSrc}
         changeVideoIndex={changeVideoIndex}
