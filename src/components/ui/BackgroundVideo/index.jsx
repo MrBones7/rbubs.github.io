@@ -20,13 +20,13 @@ class BackgroundVideoPlayer extends Component {
     this.playNextScene = this.playNextScene.bind(this);    
   }
 
+  videoTimer = null;
+
   async componentDidMount() {
     window.addEventListener('resize', this.handleResize);
     await this.listScenes();  
     this.playNextScene();
   }
-
-  videoTimer = null;
 
   componentWillUnmount() {
     clearTimeout(this.videoTimer);
@@ -36,6 +36,17 @@ class BackgroundVideoPlayer extends Component {
     };
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    console.log('nextProps', nextProps);
+    console.log('nextState', nextState);
+
+    if (nextProps.currentVideoIndex !== this.props.currentVideoIndex || nextState.prevPlayer === undefined) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+  
   // creates an array of scenes in a video set, removing any empty scenes
   listScenes = async () => {
     const sceneList = Object.keys(this.props.videoSrc[this.props.currentVideoIndex].scenes)
@@ -334,6 +345,7 @@ class BackgroundVideoPlayer extends Component {
             {
               this.state.sceneList.map(scene => {
                 if (scene) {
+                  console.log('`${this.props.videoSrc[this.props.currentVideoIndex]["scenes"][scene]}`', `${this.props.videoSrc[this.props.currentVideoIndex]["scenes"][scene]}`);
                   return <VideoPlayer 
                     autoPlay={false}
                     className={`${scene}_${this.props.currentVideoIndex}`}
