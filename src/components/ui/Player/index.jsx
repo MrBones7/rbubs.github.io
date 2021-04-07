@@ -16,28 +16,25 @@ class Player extends React.Component {
     return this.playerRef && this.playerRef.audioEl.current;
   }
 
-  componentDidMount() {
+  fetchData = () => {
     const { stationId } = this.props;
     const statusUrl = `https://public.radio.co/stations/${stationId}/status`;
 
-    const fetchData = () => {
-      fetch(statusUrl)
-        .then(response => response.json())
-        .then(({ current_track }) => {
-          this.setState(() => ({ currentTrack: current_track }));
-        });
-    };
+    fetch(statusUrl)
+    .then(response => response.json())
+    .then(({ current_track }) => {
+      this.setState({ current_track });
+    });
+  }
 
-    // fetchData();
-
-    // const interval = setInterval(fetchData, 5000);
-
-    // this.setState(() => ({ interval }));
+  componentDidMount() {
+    this.fetchData();
+    this.timer = setInterval(() => this.fetchData(), 5000);
   }
 
   componentWillUnmount() {
-    const { interval } = this.state;
-    clearInterval(interval);
+    clearInterval(this.timer);
+    this.timer = null;
   }
 
   render() {
