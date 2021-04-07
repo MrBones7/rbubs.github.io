@@ -23,7 +23,7 @@ class Player extends React.Component {
     fetch(statusUrl)
     .then(response => response.json())
     .then(({ current_track }) => {
-      this.setState({ current_track });
+      this.setState({ currentTrack: current_track });
     });
   }
 
