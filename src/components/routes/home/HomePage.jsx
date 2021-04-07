@@ -10,7 +10,6 @@ import Nav from '../../ui/Nav';
 import Player from '../../ui/Player';
 import Row from '../../ui/Row';
 import SupportButton from '../../ui/SupportButton';
-import BackgroundSceneList from '../../ui/BackgroundSceneList';
 
 // EDIT THESES VALUES TO SETUP NEW VIDEO SETS
 
@@ -164,7 +163,6 @@ const HomePage = () => {
           <SupportButton link={currentSceneNft} />
         </Row>
       </div>
-
       <BackgroundVideoPlayer
         videoSrc={videoSrc}
         changeVideoIndex={changeVideoIndex}

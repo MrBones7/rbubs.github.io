@@ -28,11 +28,11 @@ class Player extends React.Component {
         });
     };
 
-    fetchData();
+    // fetchData();
 
-    const interval = setInterval(fetchData, 5000);
+    // const interval = setInterval(fetchData, 5000);
 
-    this.setState(() => ({ interval }));
+    // this.setState(() => ({ interval }));
   }
 
   componentWillUnmount() {
