@@ -56,6 +56,9 @@ const BackgroundSceneList = (props) => {
 
   const windowSize = useWindowResize();
 
+  // show mobile videos is screen width is less than 855px (Galaxy S1 Ultra viewport)
+  const videoSuffix = windowSize.width < 855 ? 'mp4-mobile.mp4' : 'mp4.mp4';
+
   if (sceneList && sceneList.length > 0) {
     return (   
       <div style={{ position: 'absolute', width: ' 100%', height: '100%' }}>
@@ -70,7 +73,7 @@ const BackgroundSceneList = (props) => {
                 key={`${scene}_${props.currentVideoIndex}`}
                 loop={false}
                 muted
-                src={[{ src: `${props.videoSrc[props.currentVideoIndex]["scenes"][scene]}`,
+                src={[{ src: `${props.videoSrc[props.currentVideoIndex]["scenes"][scene]}${videoSuffix}`,
                     type: 'video/mp4' }]}
                 style={{display: 'none'}}
               />
