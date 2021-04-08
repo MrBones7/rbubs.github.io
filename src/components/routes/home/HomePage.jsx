@@ -26,7 +26,7 @@ const videoSrc = [
 //  },
   {
     scenes: {
-      enter: 'https://streamable.com/l/rnwq0p/mp4.mp4',
+      enter: 'https://streamable.com/l/idiuej/mp4.mp4',
       mainLoop: 'https://streamable.com/l/uqz91y/mp4.mp4',
       mainLoopToSubLoop: 'https://streamable.com/l/akzkwp/mp4.mp4',
       subLoop: 'https://streamable.com/l/1uvga7/mp4.mp4',
