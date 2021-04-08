@@ -264,7 +264,7 @@ const BackgroundVideoPlayer = (props) => {
           posterSrc: null,
           prevPlayer: currentScene.player
         });
-        break;        
+        break;
       }        
     }
   }

@@ -9,7 +9,12 @@ class Player extends React.Component {
   constructor(props) {
     super(props);
     this.playerRef;
-    this.state = {};
+    this.state = {
+      currentTrack: {
+        title: ''
+      },
+      volume: 0.6
+    };
   }
 
   playerEl() {
@@ -36,7 +41,7 @@ class Player extends React.Component {
     clearInterval(this.timer);
     this.timer = null;
   }
-
+  
   render() {
     const { initialVolume, stationId } = this.props;
     const { currentTrack } = this.state;
@@ -47,7 +52,14 @@ class Player extends React.Component {
 
     const onPause = () => { this.playerEl() && this.playerEl().pause(); };
 
-    const setVolume = volume => { if (this.playerEl()) this.playerEl().volume = volume; };
+    const setVolume = volume => { 
+      if (this.playerEl()) { 
+        this.playerEl().volume = volume 
+      }; 
+      this.setState({
+        volume: volume
+      })
+    };
 
     return (
       <div className={player}>
@@ -56,14 +68,14 @@ class Player extends React.Component {
           onPause={onPause}
           onPlay={onPlay}
           setVolume={setVolume}
-          currentTrack={currentTrack}
+          currentTrack={ currentTrack }
           canPlay
-          initialVolume={initialVolume}
+          initialVolume={ this.state.volume }
         />
         <ReactAudioPlayer
           src={radioSrc}
           controls
-          volume={initialVolume}
+          volume={ this.state.volume }
           style={{ display: 'none' }}
           ref={(el) => { this.playerRef = el; }}
         />

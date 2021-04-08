@@ -34,7 +34,7 @@ const StyledSlider = withStyles({
   },
 })(Slider);
 
-const VolumeSlider = ({ onChange, initialVolume }) => {
+const VolumeSlider = React.memo(({ onChange, initialVolume }) => {
   const [value, setValue] = React.useState(initialVolume * 100.0);
 
   const handleChange = (event, newValue) => {
@@ -47,13 +47,13 @@ const VolumeSlider = ({ onChange, initialVolume }) => {
   };
 
   return (
-    <div className={volumeSlider}>
+    <div className={ volumeSlider }>
       <FontAwesomeIcon icon={faVolumeDown} className={cx(primaryColor, hoverable)} onClick={() => handleChange(null, 0.0)} />
       <StyledSlider value={value} className={slider} onChange={handleChange} aria-labelledby="continuous-slider" />
       <FontAwesomeIcon icon={faVolumeUp} className={cx(primaryColor, hoverable)} onClick={() => handleChange(null, 100.0)} />
     </div>
   );
-};
+}, () => {return true;});
 
 VolumeSlider.propTypes = {
   onChange: PropTypes.func.isRequired,
