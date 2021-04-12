@@ -9,37 +9,39 @@ class Player extends React.Component {
   constructor(props) {
     super(props);
     this.playerRef;
-    this.state = {};
+    this.state = {
+      currentTrack: {
+        title: ''
+      },
+      volume: 0.6
+    };
   }
 
   playerEl() {
     return this.playerRef && this.playerRef.audioEl.current;
   }
 
-  componentDidMount() {
+  fetchData = () => {
     const { stationId } = this.props;
     const statusUrl = `https://public.radio.co/stations/${stationId}/status`;
 
-    const fetchData = () => {
-      fetch(statusUrl)
-        .then(response => response.json())
-        .then(({ current_track }) => {
-          this.setState(() => ({ currentTrack: current_track }));
-        });
-    };
+    fetch(statusUrl)
+    .then(response => response.json())
+    .then(({ current_track }) => {
+      this.setState({ currentTrack: current_track });
+    });
+  }
 
-    fetchData();
-
-    const interval = setInterval(fetchData, 5000);
-
-    this.setState(() => ({ interval }));
+  componentDidMount() {
+    this.fetchData();
+    this.timer = setInterval(() => this.fetchData(), 5000);
   }
 
   componentWillUnmount() {
-    const { interval } = this.state;
-    clearInterval(interval);
+    clearInterval(this.timer);
+    this.timer = null;
   }
-
+  
   render() {
     const { initialVolume, stationId } = this.props;
     const { currentTrack } = this.state;
@@ -50,7 +52,14 @@ class Player extends React.Component {
 
     const onPause = () => { this.playerEl() && this.playerEl().pause(); };
 
-    const setVolume = volume => { if (this.playerEl()) this.playerEl().volume = volume; };
+    const setVolume = volume => { 
+      if (this.playerEl()) { 
+        this.playerEl().volume = volume 
+      }; 
+      this.setState({
+        volume: volume
+      })
+    };
 
     return (
       <div className={player}>
@@ -59,14 +68,14 @@ class Player extends React.Component {
           onPause={onPause}
           onPlay={onPlay}
           setVolume={setVolume}
-          currentTrack={currentTrack}
+          currentTrack={ currentTrack }
           canPlay
-          initialVolume={initialVolume}
+          initialVolume={ this.state.volume }
         />
         <ReactAudioPlayer
           src={radioSrc}
           controls
-          volume={initialVolume}
+          volume={ this.state.volume }
           style={{ display: 'none' }}
           ref={(el) => { this.playerRef = el; }}
         />

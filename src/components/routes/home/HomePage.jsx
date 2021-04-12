@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/media-has-caption */
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import { row, fullscreen, backgroundVideoPlayer, ui } from './HomePage.styles.less';
@@ -15,7 +15,7 @@ import SupportButton from '../../ui/SupportButton';
 
 // array of video source info
 const videoSrc = [
-//  Minimal scene example
+//  Minimal video set example
 //  {
 //    scenes: {
 //      enter: 'A01_Enter',
@@ -26,12 +26,12 @@ const videoSrc = [
 //  },
   {
     scenes: {
-      enter: 'A01_Enter',
-      mainLoop: 'A02_MainLoop',
-      mainLoopToSubLoop: 'A03_MainLoopToSubLoop',
-      subLoop: 'A04_SubLoop',
-      subLoopToMainLoop: 'A05_SubLoopToMainLoop',
-      exitNext: 'A06_ExitNext'
+      enter: 'https://streamable.com/l/idiuej/',
+      mainLoop: 'https://streamable.com/l/uqz91y/',
+      mainLoopToSubLoop: 'https://streamable.com/l/akzkwp/',
+      subLoop: 'https://streamable.com/l/1uvga7/',
+      subLoopToMainLoop: 'https://streamable.com/l/q17ur9/',
+      exitNext: 'https://streamable.com/l/3zec69/'
     }, 
     mainLoopMaxLoops: 6,
     mainLoopMinLoops: 3,       
@@ -40,14 +40,14 @@ const videoSrc = [
     nftUrl: null
   }, 
   {
-    scenes: {    
-      enter: 'B01_Enter',
-      mainLoop: 'B02_MainLoop',
-      mainLoopToSubLoop: 'B03_MainLoopToSubLoop',
-      subLoop: 'B04_SubLoop',
-      subLoopToMainLoop: 'B05_SubLoopToMainLoop',
-      exitPrev: 'B06_ExitPrev',
-      // exitNext: 'B07_ExitNext'
+    scenes: {
+      enter: 'https://streamable.com/l/yl025m/',
+      mainLoop: 'https://streamable.com/l/xsh8z4/',
+      mainLoopToSubLoop: 'https://streamable.com/l/u81hvk/',
+      subLoop: 'https://streamable.com/l/8zsfpm/',
+      subLoopToMainLoop: 'https://streamable.com/l/61fetd/',
+      exitPrev: 'https://streamable.com/l/p9nfo9/'
+      // exitNext: 'https://streamable.com/l/ps8igy/'      
     },
     mainLoopMaxLoops: 6,
     mainLoopMinLoops: 3,       
@@ -70,27 +70,36 @@ const HomePage = () => {
 
   // store url of current video nft
   // passed down to support button as props
-  const [currentVideoNft, setCurrentVideoNft] = useState(null);
+  // TODO: Update logic per scene, not per video set.
+  const [currentSceneNft, setCurrentSceneNft] = useState(null);
 
   // store exit button clicked status
   // values: undefined, prev, or next
   // passed down to background video player as props
   const [exit, setExit] = useState(undefined);
 
-  // store whether to show exit next button
+  // store whether to display exit previous button
   // passed down to exit button as props
-  const [showExitNext, setShowExitNext] = useState(true); 
+  const [showExitPrev, setShowExitPrev] =  useState(() => { 
+    return (videoSrc[currentVideoIndex] && videoSrc[currentVideoIndex].scenes && videoSrc[currentVideoIndex].scenes.exitPrev) 
+      ? true : false;
+  });
 
-  // store whether to show exit previous button
+  // store whether to display exit next button
   // passed down to exit button as props
-  const [showExitPrev, setShowExitPrev] = useState(false); 
+  const [showExitNext, setShowExitNext] =  useState(() => { 
+    return (videoSrc[currentVideoIndex] && videoSrc[currentVideoIndex].scenes && videoSrc[currentVideoIndex].scenes.exitNext) 
+      ? true : false;
+  });  
 
   // click handler for ExitNextButton and ExitPrevButton
   const handleExitButton = buttonName => {
     setExit(buttonName);
     if (buttonName === 'next') {
       setShowExitNext(false);
-    } else {
+    }
+
+    if (buttonName === 'prev') {
       setShowExitPrev(false);
     }
   }
@@ -104,32 +113,22 @@ const HomePage = () => {
   const changeVideoIndex = (videoIndex) => {
     setCurrentVideoIndex(videoIndex);
 
-    // display the exit previous button if an exitPrev video exists for this video set
-    if (videoSrc[videoIndex] && videoSrc[videoIndex].scenes && videoSrc[videoIndex].scenes.exitPrev) {
-      setShowExitPrev(true);
-    } else {
-      setShowExitPrev(false);     
-    }
+    // set the exit previous button display status
+    setShowExitPrev((videoSrc[videoIndex] && videoSrc[videoIndex].scenes && videoSrc[videoIndex].scenes.exitPrev) 
+      ? true : false);
 
-    // display the exit next button if an exitNext video exists for this video set
-    if (videoSrc[videoIndex] && videoSrc[videoIndex].scenes && videoSrc[videoIndex].scenes.exitNext) {
-      setShowExitNext(true);   
-    } else {
-      setShowExitNext(false);    
-    }
+    // set the exit next button display status
+    setShowExitNext((videoSrc[videoIndex] && videoSrc[videoIndex].scenes && videoSrc[videoIndex].scenes.exitNext) 
+      ? true : false);
 
+    // TODO: Change to update nft per scene, not per video set
     // update the url for the video nft if an nft exists for this video set
     if (videoSrc[videoIndex] && videoSrc[videoIndex].nftUrl) {
-      setCurrentVideoNft(videoSrc[videoIndex].nftUrl);
+      setCurrentSceneNft(videoSrc[videoIndex].nftUrl);
     } else {
-      setCurrentVideoNft(null);
+      setCurrentSceneNft(null);
     }
   }
-
-  // executes once to load initial video set
-  useEffect(()=>{
-    changeVideoIndex(0);
-  }, [])
 
   return (
     <>
@@ -144,7 +143,7 @@ const HomePage = () => {
             <ExitPrevButton handler={handleExitButton} showExit={showExitPrev} />
             <ExitNextButton handler={handleExitButton} showExit={showExitNext} />
           </div>
-          <SupportButton link={currentVideoNft} />
+          <SupportButton link={currentSceneNft} />
         </Row>
       </div>
       <BackgroundVideoPlayer
