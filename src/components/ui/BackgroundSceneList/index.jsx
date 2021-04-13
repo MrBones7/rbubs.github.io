@@ -2,12 +2,12 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import VideoPlayer from 'react-background-video-player';
 
-const BackgroundSceneList = (props) => { 
+const BackgroundSceneList = (props) => {
   // creates an array of scenes from a video set, removing any empty scenes
-  const listScenes = () => {
-    return Object.keys(props.videoSrc[props.currentVideoIndex].scenes)
-      .filter(scene => props.videoSrc[props.currentVideoIndex]["scenes"][scene] !== null);
-  }
+  const listScenes = () => (
+    Object.keys(props.videoSrc[props.currentVideoIndex].scenes)
+      .filter(scene => props.videoSrc[props.currentVideoIndex].scenes[scene] !== null)
+  );
 
   // store list of scenes for the current video set
   const [sceneList, setSceneList] = useState([]);
@@ -19,11 +19,11 @@ const BackgroundSceneList = (props) => {
   // custom hook for window resizing
   const useWindowResize = () => {
     // store window resizing values
-    const [windowSize, setWindowSize] = useState({ 
-      height: window.innerHeight, 
-      width: window.innerWidth 
+    const [windowSize, setWindowSize] = useState({
+      height: window.innerHeight,
+      width: window.innerWidth,
     });
-  
+
     useEffect(() => {
       // timeoutId for debounce mechanism
       let timeoutId = null;
@@ -32,27 +32,27 @@ const BackgroundSceneList = (props) => {
       const handleResize = () => {
         // prevent execution of previous setTimeout
         clearTimeout(timeoutId);
-            
+
         // debounce 150 milliseconds
         timeoutId = setTimeout(() => setWindowSize({
-          height: window.innerHeight,          
-          width: window.innerWidth
+          height: window.innerHeight,
+          width: window.innerWidth,
         }), 150);
       };
 
       // set resize listener
       window.addEventListener('resize', handleResize);
-  
+
       // clean up function
       return () => {
         window.removeEventListener('resize', handleResize);
         clearTimeout(timeoutId);
         timeoutId = null;
-      }
+      };
     }, []);
 
     return windowSize;
-  }
+  };
 
   const windowSize = useWindowResize();
 
@@ -60,23 +60,24 @@ const BackgroundSceneList = (props) => {
   const videoSuffix = windowSize.width < 855 ? 'mp4-mobile.mp4' : 'mp4.mp4';
 
   if (sceneList && sceneList.length > 0) {
-    return (   
+    return (
       <div style={{ position: 'absolute', width: ' 100%', height: '100%' }}>
         {
           sceneList.map(scene => {
             if (scene) {
-              return <VideoPlayer 
-                autoPlay={false}
-                className={`${scene}_${props.currentVideoIndex}`}
-                containerHeight={windowSize.height}
-                containerWidth={windowSize.width}
-                key={`${scene}_${props.currentVideoIndex}`}
-                loop={false}
-                muted
-                src={[{ src: `${props.videoSrc[props.currentVideoIndex]["scenes"][scene]}${videoSuffix}`,
-                    type: 'video/mp4' }]}
-                style={{display: 'none'}}
-              />
+              return (
+                <VideoPlayer 
+                  autoPlay={false}
+                  className={`${scene}_${props.currentVideoIndex}`}
+                  containerHeight={windowSize.height}
+                  containerWidth={windowSize.width}
+                  key={`${scene}_${props.currentVideoIndex}`}
+                  loop={false}
+                  muted
+                  src={[{ src: `${props.videoSrc[props.currentVideoIndex].scenes[scene]}${videoSuffix}`, type: 'video/mp4' }]}
+                  style={{ display: 'none' }}
+                />
+              );
             }
           })
         }
