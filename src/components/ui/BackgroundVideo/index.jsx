@@ -46,6 +46,8 @@ const BackgroundVideoPlayer = (props) => {
       player.addEventListener('ended', handleVideoEnd, false);
     }
 
+    // this is a hack to handle an issue in firefox-only
+    // where the useEffect executes before the playerWrapper is available (DomContentLoaded event).
     if (playerWrapper != null && currentScene.player !== currentScene.prevPlayer) {
       playNextScene();
     } else if (playerWrapper == null && currentScene.player !== currentScene.prevPlayer) {
