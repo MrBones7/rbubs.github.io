@@ -1,6 +1,5 @@
 /* eslint-disable jsx-a11y/media-has-caption */
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import cx from 'classnames';
 import { row, fullscreen, backgroundVideoPlayer, ui } from './HomePage.styles.less';
 import BackgroundVideoPlayer from '../../ui/BackgroundVideo';
@@ -21,7 +20,7 @@ const videoSrc = [
 //      enter: 'A01_Enter',
 //      mainLoop: 'A02_MainLoop',
 //      exitNext: 'A06_ExitNext'
-//    }, 
+//    },
 //    nftUrl: null
 //  },
   {
@@ -31,13 +30,13 @@ const videoSrc = [
       mainLoopToSubLoop: 'https://streamable.com/l/akzkwp/',
       subLoop: 'https://streamable.com/l/1uvga7/',
       subLoopToMainLoop: 'https://streamable.com/l/q17ur9/',
-      exitNext: 'https://streamable.com/l/3zec69/'
-    }, 
+      exitNext: 'https://streamable.com/l/3zec69/',
+    },
     mainLoopMaxLoops: 6,
-    mainLoopMinLoops: 3,       
+    mainLoopMinLoops: 3,
     subLoopMaxLoops: 6,
     subLoopMinLoops: 3,
-    nftUrl: null
+    nftUrl: null,
   }, 
   {
     scenes: {
@@ -46,15 +45,15 @@ const videoSrc = [
       mainLoopToSubLoop: 'https://streamable.com/l/u81hvk/',
       subLoop: 'https://streamable.com/l/8zsfpm/',
       subLoopToMainLoop: 'https://streamable.com/l/61fetd/',
-      exitPrev: 'https://streamable.com/l/p9nfo9/'
-      // exitNext: 'https://streamable.com/l/ps8igy/'      
+      exitPrev: 'https://streamable.com/l/p9nfo9/',
+      // exitNext: 'https://streamable.com/l/ps8igy/'
     },
     mainLoopMaxLoops: 6,
-    mainLoopMinLoops: 3,       
+    mainLoopMinLoops: 3,
     subLoopMaxLoops: 6,
     subLoopMinLoops: 3,
-    nftUrl: null
-  }  
+    nftUrl: null,
+  }
 ];
 
 const stationId = 'sb5955894a';
@@ -63,7 +62,7 @@ const stationId = 'sb5955894a';
 
 const Spacer = () => <div style={{ flexGrow: 1 }} />;
 
-const HomePage = () => {  
+const HomePage = () => {
   // store index of current video set
   // passed down to background video player as props
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
@@ -80,14 +79,14 @@ const HomePage = () => {
 
   // store whether to display exit previous button
   // passed down to exit button as props
-  const [showExitPrev, setShowExitPrev] =  useState(() => { 
+  const [showExitPrev, setShowExitPrev] = useState(() => { 
     return (videoSrc[currentVideoIndex] && videoSrc[currentVideoIndex].scenes && videoSrc[currentVideoIndex].scenes.exitPrev) 
       ? true : false;
   });
 
   // store whether to display exit next button
   // passed down to exit button as props
-  const [showExitNext, setShowExitNext] =  useState(() => { 
+  const [showExitNext, setShowExitNext] = useState(() => { 
     return (videoSrc[currentVideoIndex] && videoSrc[currentVideoIndex].scenes && videoSrc[currentVideoIndex].scenes.exitNext) 
       ? true : false;
   });  
@@ -158,4 +157,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default HomePage
