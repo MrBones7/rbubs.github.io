@@ -1,0 +1,119 @@
+/* NavMenu */
+#nav-menu {
+    display: block;
+    height: 350px;
+    text-align: right;
+    width: 183px;
+}
+
+[hidden] { 
+    border: 0;
+    display: none;
+    z-index: 0;
+}
+
+#nav-menu-button {
+    background: transparent;
+    border: 0;
+    height: 21px;
+    line-height: 130%;
+    padding: 0;
+    position: relative;
+    text-align: right;
+    text-rendering: optimizeLegibility;
+    left: 150px;
+    top: 5px;
+    width: 33px;
+    z-index: 999;
+}
+
+#nav-menu-button .nav-icon {
+    font-size: 20px;
+    width: 18px;
+}
+
+[aria-controls="nav-menu-list"] {
+    display: block !important;
+}
+
+#nav-menu ol {
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(8px);
+    display: block;
+    height: 350px;
+    list-style: none;
+    margin: 0;
+    max-height: 0;
+    overflow: hidden;
+    padding: 0;
+    width: 100%;
+    z-index: 999;
+}
+
+#nav-menu ol > li {
+    padding: 6px 12px;
+    text-align: right;
+}
+
+#nav-menu ol > li:first-child {
+    padding-top: 12px;
+}
+
+#nav-menu ol > li.nav-rule {
+    margin: 6px 0;
+    padding: 0;
+}
+
+#nav-menu ol > li.nav-rule > hr {
+    color: #fff;
+    margin: 0 auto;
+    padding: 0;
+    width: 154px;
+}
+
+#nav-menu a {
+    display: flex;
+    align-items: center;
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    justify-content: flex-end;
+    line-height: 130%;
+    padding: 0;
+    text-align: right;
+    width: 100%;
+    text-transform: uppercase;
+}
+
+#nav-menu a > svg {
+    margin-left: 10px;
+}
+
+#nav-menu a:link,
+#nav-menu a:visited,
+#nav-menu a:active {
+    color: #f6f6f6;
+}
+
+[aria-expanded="true"] ~ #nav-menu ol {
+    display: block;
+    max-height: 500px;
+}
+
+[aria-expanded="true"] ~ #nav-menu ol > li > a {
+    z-index: 999;
+}
+
+[aria-expanded="true"] ~ #nav-menu {
+    border: 1px solid rgba(0, 0, 0, .2);
+    border-radius: 4px;      
+}
+
+[aria-expanded="true"] .nav-open {
+    display: none;
+}
+
+#nav-menu-button[aria-expanded="true"] {
+    z-index: 1;
+    display: none !important;    
+}

@@ -1,0 +1,27 @@
+.header {
+  background: transparent;
+  display: flex;
+  height: auto;
+  justify-content: space-between;
+  margin: 0;
+  padding: 16px;
+  width: 100%;
+}
+
+#logo-wrapper {
+  align-self: flex-start;
+  width: 150px;
+}
+
+#nav-menu-wrapper {
+ /* align-items: flex-start;
+  flex-direction: row;
+  display: flex;
+  justify-content: flex-end;*/
+}
+
+#home-logo {
+  font-size: 2rem;
+  font-weight: bold;
+  height: 35px;
+} 
