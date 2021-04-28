@@ -27,6 +27,7 @@ const NavMenu = ({ handler }) => {
             navButton.style.display = 'block';
             navButton.removeEventListener("click", openNav);
             htmlElement.addEventListener("click", closeNavOnBodyClick);
+            handler('close');
         }
 
         navButton.addEventListener("click", openNav);

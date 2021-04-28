@@ -133,7 +133,11 @@ const HomePage = () => {
   }
 
   const handleNavMenu = (navSelection) => {
-    setCurrentContent(navSelection);
+    if (navSelection === 'close') {
+      setCurrentContent(null);
+    } else {
+      setCurrentContent(navSelection);
+    }
   }
 
   const closeContent = () => {
