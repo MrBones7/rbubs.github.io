@@ -141,7 +141,6 @@ const HomePage = () => {
   }
 
   const closeContent = () => {
-    console.log('closeContent');
     setCurrentContent(null);
   }
 
