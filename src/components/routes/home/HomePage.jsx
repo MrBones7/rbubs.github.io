@@ -151,13 +151,11 @@ const HomePage = () => {
         <Header handler={ handleNavMenu } />
         <Spacer />
         <ContentAbout display={ currentContent } close={ closeContent } />
-        <Row alignItems="flex-end">
-          <Player initialVolume={ 0.6 } stationId={ stationId } />
-          <div>
-            <ExitPrevButton handler={ handleExitButton } showExit={ showExitPrev } />
-            <ExitNextButton handler={ handleExitButton } showExit={ showExitNext } />
-          </div>
-        </Row>
+        <div>
+          <ExitPrevButton handler={ handleExitButton } showExit={ showExitPrev } />
+          <ExitNextButton handler={ handleExitButton } showExit={ showExitNext } />
+        </div>
+        <Player initialVolume={ 0.6 } stationId={ stationId } />
       </div>
       <BackgroundVideoPlayer
         videoSrc={ videoSrc }
