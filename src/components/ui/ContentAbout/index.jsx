@@ -21,10 +21,9 @@ const ContentAbout = ({ display, close }) => {
             </div>
 
             <div className="about-body">
-                <p>rebase.radio is a project ipsum dolor sit amet, consectetur adipiscing elit. 
-                Praesent ultricies in odio eget bibendum. Donec libero orci, suscipit in tempor ac,
-                interdum eget nunc. Praesent in tortor sit amet libero viverra interdum vel quis ante. 
-                Integer lobortis metus ut pellentesque lacinia. Nullam lobortis ornare ante at gravida.</p> 
+                <p>Rebase.radio let's you collect scenes then connect them using our dynamic background controls. You will only be able to connect the scene if you own its corresponding NFT. Behind each canvas lies a universe. From my heart to yours, I'll see you when you get here.</p> 
+                <p>-Bones</p>
+                <p></p>
             </div>
 
             <div className="about-social">
