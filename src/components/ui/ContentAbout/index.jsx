@@ -21,7 +21,7 @@ const ContentAbout = ({ display, close }) => {
             </div>
 
             <div className="about-body">
-                <p>Rebase.radio let's you collect scenes then connect them using our dynamic background controls. You will only be able to connect the scene if you own its corresponding NFT. Behind each canvas lies a universe. From my heart to yours, I'll see you when you get here.</p> 
+                <p>Behind each canvas lies a universe. From my heart to yours, I'll see you when you get here.</p> 
                 <p>-Bones</p>
                 <p></p>
             </div>
