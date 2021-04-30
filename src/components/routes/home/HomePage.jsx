@@ -150,10 +150,8 @@ const HomePage = () => {
         <Header handler={ handleNavMenu } />
         <Spacer />
         <ContentAbout display={ currentContent } close={ closeContent } />
-        <div>
-          <ExitPrevButton handler={ handleExitButton } showExit={ showExitPrev } />
-          <ExitNextButton handler={ handleExitButton } showExit={ showExitNext } />
-        </div>
+        <ExitPrevButton handler={ handleExitButton } showExit={ showExitPrev } />
+        <ExitNextButton handler={ handleExitButton } showExit={ showExitNext } />
         <Player initialVolume={ 0.6 } stationId={ stationId } />
       </div>
       <BackgroundVideoPlayer
