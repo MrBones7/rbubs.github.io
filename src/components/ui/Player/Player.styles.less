@@ -2,6 +2,102 @@
 @secondary-color: #ccc;
 
 .player {
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(32px);
+  border-radius: 4px;
+  bottom: 32px;
+  display: flex;
+  height: 48px;
+  padding: 8px 12px;
+  overflow: hidden;
+  position: absolute;
+  width: 288px;
+}
+
+@media (max-width: 479px) {
+  .player {
+      align-self: center;
+  }
+}
+
+@media (min-width: 480px) {
+  .player {
+      right: 14px;
+      z-index: 1000;
+  }
+}
+
+.playerInfo {
+  flex-grow: 3;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+}
+
+.playerControls {
+  margin-right: 8px;
+}
+
+.togglePlay {
+  font-size: 2.5rem;
+}
+
+.artistLink > a,
+.trackLink > a {
+  display: inline-block;
+  max-width: 184px;
+  overflow: hidden;
+}
+
+.artistLink,
+.artistLink p,
+.trackLink,
+.trackLink p {
+  margin: 0;
+  padding: 0;
+  line-height: 16px;
+}
+
+.artistLink > a {
+  color: @primary-color;
+  max-width: 184px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  margin: 0;
+  text-decoration: none;
+
+  &:hover {
+    color: @secondary-color;
+  }
+}
+
+.trackLink > a {
+  color: @primary-color;
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  margin: 0;
+  text-decoration: none;
+
+  &:hover {
+    color: @secondary-color;
+  }
+}
+
+.playerIcon {
+  justify-self: end;
+  margin-left: 8px;
+  text-align: right;
+}
+
+/*
+
+ORIGINAL CSS (pre-Lucas)
+
+@primary-color: #ddd;
+@secondary-color: #ccc;
+
+.player {
   display: flex;
   flex-flow: column;
 }
@@ -52,3 +148,4 @@
   flex-flow: row nowrap;
   align-items: center;
 }
+*/

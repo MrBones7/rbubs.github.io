@@ -5,10 +5,10 @@ import { row, fullscreen, backgroundVideoPlayer, ui } from './HomePage.styles.le
 import BackgroundVideoPlayer from '../../ui/BackgroundVideo';
 import ExitNextButton from '../../ui/ExitNextButton';
 import ExitPrevButton from '../../ui/ExitPrevButton';
-import Nav from '../../ui/Nav';
+import Header from '../../ui/Header';
+import ContentAbout from '../../ui/ContentAbout';
 import Player from '../../ui/Player';
 import Row from '../../ui/Row';
-import SupportButton from '../../ui/SupportButton';
 
 // EDIT THESES VALUES TO SETUP NEW VIDEO SETS
 
@@ -72,6 +72,9 @@ const HomePage = () => {
   // TODO: Update logic per scene, not per video set.
   const [currentSceneNft, setCurrentSceneNft] = useState(null);
 
+  // current content item to display
+  const [currentContent, setCurrentContent] = useState(null);
+
   // store exit button clicked status
   // values: undefined, prev, or next
   // passed down to background video player as props
@@ -129,29 +132,35 @@ const HomePage = () => {
     }
   }
 
+  const handleNavMenu = (navSelection) => {
+    if (navSelection === 'close') {
+      setCurrentContent(null);
+    } else {
+      setCurrentContent(navSelection);
+    }
+  }
+
+  const closeContent = () => {
+    setCurrentContent(null);
+  }
+
   return (
     <>
-      <div className={cx(fullscreen, ui)}>
-        <Row>
-          <Nav />
-        </Row>
+      <div className={ cx(fullscreen, ui) }>
+        <Header handler={ handleNavMenu } />
         <Spacer />
-        <Row alignItems="flex-end">
-          <Player initialVolume={0.6} stationId={stationId} />
-          <div>
-            <ExitPrevButton handler={handleExitButton} showExit={showExitPrev} />
-            <ExitNextButton handler={handleExitButton} showExit={showExitNext} />
-          </div>
-          <SupportButton link={currentSceneNft} />
-        </Row>
+        <ContentAbout display={ currentContent } close={ closeContent } />
+        <ExitPrevButton handler={ handleExitButton } showExit={ showExitPrev } />
+        <ExitNextButton handler={ handleExitButton } showExit={ showExitNext } />
+        <Player initialVolume={ 0.6 } stationId={ stationId } />
       </div>
       <BackgroundVideoPlayer
-        videoSrc={videoSrc}
-        changeVideoIndex={changeVideoIndex}
-        className={cx(fullscreen, backgroundVideoPlayer)}
-        currentVideoIndex={currentVideoIndex}
-        exit={exit}
-        resetExit={resetExit}
+        videoSrc={ videoSrc }
+        changeVideoIndex={ changeVideoIndex }
+        className={ cx(fullscreen, backgroundVideoPlayer) }
+        currentVideoIndex={ currentVideoIndex }
+        exit={ exit }
+        resetExit={ resetExit }
       />
     </>
   );
