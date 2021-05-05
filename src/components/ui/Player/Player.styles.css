@@ -7,7 +7,6 @@
   overflow: hidden;
   position: absolute;
   width: 288px;
-  height: 48px;
 }
 
 .playerCollapsed {
@@ -40,7 +39,7 @@
   align-items: center;
   display: flex;
   height: 40px;
-  justify-content: start;
+  justify-content: flex-start;
   margin-left: 40px;
 }
 
