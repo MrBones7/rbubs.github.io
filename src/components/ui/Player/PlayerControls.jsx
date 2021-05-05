@@ -83,22 +83,20 @@ TogglePlayButton.propTypes = {
 
 const PlayerControls = ({
   canPlay,
+  isPlaying,
   onPlay,
   onPause,
   setVolume,
   initialVolume = 0.6,
 }) => {
-  const [isPlaying, setIsPlaying] = useState(false);
 
   if (!canPlay) return null;
 
   const togglePlayHandler = () => {
     if (isPlaying) {
       onPause();
-      setIsPlaying(false);
     } else {
       onPlay();
-      setIsPlaying(true);
     }
   };
 
@@ -112,7 +110,7 @@ const PlayerControls = ({
 
   return (
     <div className={playerControls}>
-      <TogglePlayButton onClick={togglePlayHandler} isPlaying={isPlaying} />
+      <TogglePlayButton onClick={ togglePlayHandler } isPlaying={ isPlaying } />
       { /*<VolumeSlider onChange={setVolume} initialVolume={initialVolume} />*/ }
     </div>
   );
@@ -120,6 +118,7 @@ const PlayerControls = ({
 
 PlayerControls.propTypes = {
   canPlay: PropTypes.bool.isRequired,
+  isPlaying: PropTypes.bool.isRequired,
   onPlay: PropTypes.func.isRequired,
   onPause: PropTypes.func.isRequired,
   setVolume: PropTypes.func.isRequired,
