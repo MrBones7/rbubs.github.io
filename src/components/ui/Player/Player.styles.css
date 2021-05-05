@@ -139,6 +139,8 @@ p.trackLink {
 }
 
 .playerIcon {
+  align-items: center;
+  display: flex;
   justify-self: end;
   margin-left: 8px;
   text-align: right;
