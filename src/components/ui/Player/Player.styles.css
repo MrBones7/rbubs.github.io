@@ -1,0 +1,207 @@
+.player {
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(32px);
+  border-radius: 4px;
+  bottom: 32px;
+  padding: 8px 12px;
+  overflow: hidden;
+  position: absolute;
+  width: 288px;
+  height: 48px;
+}
+
+.playerCollapsed {
+  height: 48px;
+}
+
+.playerExpanded {
+  flex-direction: column;
+  height: 187px;
+}
+
+.playerExpanded > .expandedTop {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  height: 32px;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.playerExpanded > .expandedTop > svg {
+  margin-right: 8px;
+}
+
+.playerExpanded > .expandedTop > p {
+  text-align: left;
+}
+
+.playerExpanded > .stationForm > div {
+  align-items: center;
+  display: flex;
+  height: 40px;
+  justify-content: start;
+  margin-left: 40px;
+}
+
+.playerExpanded > .stationForm > div > p {
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  margin-left: 8px;
+  text-decoration: none;
+}
+
+.expandedControls {
+  display: flex;
+  position: absolute;
+  bottom: 0;
+}
+
+.toggleOpen {
+  display: flex !important;
+}
+
+.toggleClosed {
+  display: none !important;
+}
+
+@media (max-width: 479px) {
+  .player {
+      align-self: center;
+  }
+}
+
+@media (min-width: 480px) {
+  .player {
+      right: 14px;
+      z-index: 1000;
+  }
+}
+
+.playerInfo {
+  flex-grow: 3;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+}
+
+.playerControls {
+  margin-right: 8px;
+}
+
+.togglePlay {
+  font-size: 2.5rem;
+}
+
+.artistLink > a,
+.trackLink > a {
+  display: inline-block;
+  max-width: 184px;
+  overflow: hidden;
+}
+
+.artistLink,
+.artistLink p,
+.trackLink,
+.trackLink p {
+  margin: 0;
+  padding: 0;
+  line-height: 16px;
+}
+
+.artistLink > a,
+p.artistLink {
+  color: #ddd;
+  max-width: 184px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  margin: 0;
+  text-decoration: none;
+}
+
+.artistLink > a:hover {
+  color: #ccc;
+}
+
+.trackLink > a,
+p.trackLink {
+  color: #ddd;
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  margin: 0;
+  text-decoration: none;
+}
+
+.trackLink > a:hover {
+  color: #ccc;
+}
+
+.playerIcon {
+  align-items: center;
+  display: flex;
+  justify-self: end;
+  margin-left: 8px;
+  text-align: right;
+}
+
+/*
+
+ORIGINAL CSS (pre-Lucas)
+
+@primary-color: #ddd;
+@secondary-color: #ccc;
+
+.player {
+  display: flex;
+  flex-flow: column;
+}
+
+.playerInfo {
+  flex-grow: 1;
+  overflow: hidden;
+
+  display: flex;
+  flex-flow: row;
+
+  span:first-child {
+    margin-right: 1rem;
+  }
+
+  p {
+    padding: 0;
+    margin: 0 0 1rem;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .playerInfo p {
+    animation: none;
+    margin-bottom: 1rem;
+  }
+}
+
+.playerControls {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+}
+
+.togglePlay {
+  font-size: 2.5rem;
+}
+
+.slider {
+  margin: 0 1rem;
+}
+
+.volumeSlider {
+  font-size: 1.5rem;
+  margin: 0 2rem;
+
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+}
+*/

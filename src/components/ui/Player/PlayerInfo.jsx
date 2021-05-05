@@ -2,7 +2,8 @@ import React from 'react';
 import queryString from 'query-string';
 import PropTypes from 'prop-types';
 import SongReaction from './SongReaction';
-import { playerInfo, artistLink, trackLink } from './Player.styles.less';
+// import { playerInfo, artistLink, trackLink } from './Player.styles.less';
+import "./Player.styles.css";
 import { title as siteTitle } from '../../../../settings';
 
 const TrackInfo = ({ title }) => {
@@ -16,8 +17,8 @@ const TrackInfo = ({ title }) => {
 
   return (
     <>
-      <p className={artistLink}><a href={searchUrl} target="_blank" rel="noopener noreferrer">{trackArray[0]}</a></p>
-      <p className={trackLink}><a href={searchUrl} target="_blank" rel="noopener noreferrer">{trackArray[1]}</a></p>
+      <p className="artistLink"><a href={searchUrl} target="_blank" rel="noopener noreferrer">{trackArray[0]}</a></p>
+      <p className="trackLink"><a href={searchUrl} target="_blank" rel="noopener noreferrer">{trackArray[1]}</a></p>
     </>
   );
 };
@@ -30,7 +31,7 @@ const PlayerInfo = ({ currentTrack }) => {
   if (!currentTrack) return null;
 
   return (
-    <div className={playerInfo}>
+    <div className="playerInfo">
       { /*<SongReaction currentTrack={currentTrack} />*/}
       <TrackInfo {...currentTrack} />
     </div>
