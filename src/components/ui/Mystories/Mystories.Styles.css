@@ -1,0 +1,87 @@
+/* my stories home page style */
+#Mystores-home {
+  padding: 8px 16px;
+  position: absolute;
+  width: 90%;
+  height: 55px;
+  bottom: 2rem;
+  margin: 0 auto;
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(32px);
+  border-radius: 8px;
+  font-size: 16px;
+  color: #FFFFFF;
+}
+.mystories {
+  font-weight: bold;
+  font-size: 18px;
+  color: #ffffff;
+  line-height: 23px;
+}
+ /* My stories style */
+p.artistLink, p.trackLink {
+    color: #fff !important;
+}
+.mystories-list .header {
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+}
+.mystories-list .header .left {
+    align-items: center;
+    display: flex;
+}
+.mystories-list .header .left > span {
+  color: #FFFFFF;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 21px;
+}
+.playing {
+  position: relative;
+}
+.play-btn {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.store-info {
+  font-size: 12px;
+  color: #666666;
+}
+/* my stories in details page styles */
+
+.line-Mystories {
+  border: 1px solid #ffffff;
+  margin: 18px auto;
+}
+.btn-browse-all-stories {
+  background: #FFFFFF !important;
+  border-radius: 8px !important;
+  color: rgb(114 57 116) !important;
+  font-weight: 900 !important;
+  font-size: 14px !important;
+  line-height: 16px !important;
+  margin: auto !important;
+}
+.description {
+  font-size: 13px;
+  color: #666666;
+}
+.padding-6 {
+  padding: 6px !important;
+}
+@media (max-width: 479px) {
+  #Mystores-home {
+    align-self: center;
+  }
+}
+@media (min-width: 480px) {
+  #Mystores-home {
+    width: 360px;
+    right: 25px;
+    z-index: 1000;
+  }
+}

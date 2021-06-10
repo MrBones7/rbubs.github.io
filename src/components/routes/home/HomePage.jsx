@@ -1,10 +1,17 @@
 /* eslint-disable jsx-a11y/media-has-caption */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import cx from 'classnames';
 import { row, fullscreen, backgroundVideoPlayer, ui } from './HomePage.styles.less';
 import BackgroundVideoPlayer from '../../ui/BackgroundVideo';
-import ExitNextButton from '../../ui/ExitNextButton';
-import ExitPrevButton from '../../ui/ExitPrevButton';
+// import ExitNextButton from '../../ui/ExitNextButton';
+// import ExitPrevButton from '../../ui/ExitPrevButton';
+import StoreHome from '../../ui/Store';
+import Stories from '../../ui/Store/Stories';
+import StoreInDetails from '../../ui/Store/StoreInDetails';
+import MystoriesHome from '../../ui/Mystories';
+import MyStories from '../../ui/Mystories/MyStories';
+import MyStorieInDetails from '../../ui/Mystories/MyStorieInDetails';
+import Search from '../../ui/Search'
 import Header from '../../ui/Header';
 import ContentAbout from '../../ui/ContentAbout';
 import Player from '../../ui/Player';
@@ -74,7 +81,7 @@ const HomePage = () => {
 
   // current content item to display
   const [currentContent, setCurrentContent] = useState(null);
-
+  
   // store exit button clicked status
   // values: undefined, prev, or next
   // passed down to background video player as props
@@ -143,16 +150,38 @@ const HomePage = () => {
   const closeContent = () => {
     setCurrentContent(null);
   }
-
+  const [width, setWidth] = useState(window.innerWidth);
+  function handleWindowSizeChange() {
+    setWidth(window.innerWidth);
+  }
+  useEffect(() => {
+    window.addEventListener('resize', handleWindowSizeChange);
+    return () => {
+      window.removeEventListener('resize', handleWindowSizeChange);
+    }
+  }, []);
+  
   return (
+    
     <>
       <div className={ cx(fullscreen, ui) }>
         <Header handler={ handleNavMenu } />
         <Spacer />
         <ContentAbout display={ currentContent } close={ closeContent } />
-        <ExitPrevButton handler={ handleExitButton } showExit={ showExitPrev } />
-        <ExitNextButton handler={ handleExitButton } showExit={ showExitNext } />
-        <Player initialVolume={ 0.6 } stationId={ stationId } />
+        <StoreHome  handler={ handleNavMenu } display={ currentContent }/>
+        <Stories display={ currentContent } close={ closeContent } handler={ handleNavMenu }/>
+        <StoreInDetails display={ currentContent } close={ closeContent } handler={ handleNavMenu }/>
+        {/* <ExitPrevButton handler={ handleExitButton } showExit={ showExitPrev } />
+        <ExitNextButton handler={ handleExitButton } showExit={ showExitNext } /> */}
+        {!((currentContent === 'browseStories'
+        || currentContent === 'store-in-details'
+        || currentContent === 'myStories'
+        || currentContent === 'MystoriesInDetails') && (width <= 768)) && 
+        <Player initialVolume={ 0.6 } stationId={ stationId } display={ currentContent } /> }
+        <MystoriesHome handler={ handleNavMenu } display={ currentContent }/>
+        <MyStories display={ currentContent } close={ closeContent } handler={ handleNavMenu } />
+        <MyStorieInDetails display={ currentContent } close={ closeContent } handler={ handleNavMenu }/>
+        <Search display={ currentContent } close={ closeContent } handler={ handleNavMenu } />
       </div>
       <BackgroundVideoPlayer
         videoSrc={ videoSrc }

@@ -11,8 +11,9 @@ const StationInfo = ({ currentStation = 'Synthwave' }) => {
 
   return (
     <div className="playerInfo">
-      <p className="artistLink">Select Station</p>
-      <p className="trackLink">Now playing: {currentStation}</p>
+      <p className="artistLink">Station:</p>
+      {/* <p className="artistLink">Select Station</p>
+      <p className="trackLink">Now playing: {currentStation}</p> */}
     </div>
   );
 };

@@ -12,12 +12,10 @@
   align-self: flex-start;
   width: 150px;
 }
-
-#nav-menu-wrapper {
- /* align-items: flex-start;
-  flex-direction: row;
-  display: flex;
-  justify-content: flex-end;*/
+@media (min-width: 480px) {
+  .header {
+    padding: 16px 25px;
+  }
 }
 
 #home-logo {

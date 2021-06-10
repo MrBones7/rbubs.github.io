@@ -3,6 +3,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
 html {
   box-sizing: border-box;
@@ -17,26 +18,32 @@ html {
 *::after {
   box-sizing: inherit;
 }
+.w-100 {
+  width: 100%;
+}
 
 body {
-  font-family: 'VT323', monospace;
+  font-family: 'Roboto', sans-serif;
   font-size: 1.6rem;
   line-height: 1.6;
   color: @primary-color;
-
+  
   display: flex; 
   flex-direction: column;
   margin: 0;
+  font-weight: 500;
 
-  overflow-y: hidden; /* Hide vertical scrollbar */
+  overflow-y: scroll; /* Hide vertical scrollbar */
   overflow-x: hidden; /* Hide horizontal scrollbar */
-
-  min-height: 100vh;
   min-height: -webkit-fill-available; /* mobile viewport bug fix */
 }
 
 .primaryColor {
   color: @primary-color;
+}
+.MuiButtonBase-root {
+  background: #EEEEEE;
+  border-radius: 4px;
 }
 
 a, .hoverable {
@@ -50,4 +57,12 @@ a, .hoverable {
     cursor: pointer;
     color: @secondary-color;
   }
+}
+@media (max-width: 768px) {
+  body {
+      height:100vh;
+  }
+}
+.MuiAccordionSummary-content.Mui-expanded {
+  margin: 12px 0 !important;
 }
