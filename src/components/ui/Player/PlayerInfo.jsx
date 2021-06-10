@@ -17,8 +17,8 @@ const TrackInfo = ({ title }) => {
 
   return (
     <>
-      <p className="artistLink"><a href={searchUrl} target="_blank" rel="noopener noreferrer">{trackArray[0]}</a></p>
-      <p className="trackLink"><a href={searchUrl} target="_blank" rel="noopener noreferrer">{trackArray[1]}</a></p>
+      <p className="artistLink"><a href={searchUrl} target="_blank" rel="noopener noreferrer">{trackArray[1]}</a></p>
+      <p className="trackLink"><a href={searchUrl} target="_blank" rel="noopener noreferrer">{trackArray[0]}</a></p>
     </>
   );
 };

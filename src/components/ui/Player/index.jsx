@@ -27,6 +27,7 @@ class Player extends React.Component {
     this.state.expanded = !this.state.expanded;
   }
 
+
   fetchData = () => {
     const { stationId } = this.props;
     const statusUrl = `https://public.radio.co/stations/${stationId}/status`;
@@ -136,18 +137,18 @@ class Player extends React.Component {
                 <path d="M32 16C32 20.2435 30.3143 24.3131 27.3137 27.3137C24.3131 30.3143 20.2435 32 16 32C11.7565 32 7.68687 30.3143 4.68629 27.3137C1.68571 24.3131 0 20.2435 0 16C0 11.7565 1.68571 7.68687 4.68629 4.68629C7.68687 1.68571 11.7565 0 16 0C20.2435 0 24.3131 1.68571 27.3137 4.68629C30.3143 7.68687 32 11.7565 32 16Z" fill="white"/>
               </svg>
               <div className="playerInfo ml-2">
-                <p className="trackLink">Now playing:</p>
+                {/* <p className="trackLink">Now playing:</p> */}
                 <p className="artistLink fnt-16">Synthwave</p>
               </div>
             </div>
-            <div>
+            {/* <div>
               <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <circle cx="16" cy="16" r="14.5" stroke="white" strokeWidth="3"/>
               </svg>
               <p className="artistLink fnt-16">Lo-fi</p>
-            </div>
+            </div> */}
             <div>
-              <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <svg onClick={onPause} width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <circle cx="16" cy="16" r="14.5" stroke="white" strokeWidth="3"/>
               </svg>
               <p className="artistLink fnt-16">Turn off</p>

@@ -84,7 +84,7 @@ const StoreInDetails = ({ display, close, handler }) => {
         </div>
         <div className="px-2">
           <div className="description">
-            <p>rebase.radio is a project ipsum dolor sit amet, consectetur adipiscing elit. Praesent ultricies in odio eget bibendum. Donec libero orci, suscipit in tempor ac, interdum eget nunc.</p>
+            <p>rebase.art is a project ipsum dolor sit amet, consectetur adipiscing elit. Praesent ultricies in odio eget bibendum. Donec libero orci, suscipit in tempor ac, interdum eget nunc.</p>
           </div>
           <div className="d-flex justify-content-between align-items-center pb-2 store-info">
             <span>
@@ -324,7 +324,7 @@ const StoreInDetails = ({ display, close, handler }) => {
               <img src={Arrow} alt="arrow" className="arrow-bg" />
             </div>
             <div className="description">
-              <p>rebase.radio is a project ipsum dolor sit amet, consectetur adipiscing elit. Praesent ultricies in odio eget bibendum. Donec libero orci, suscipit in tempor ac, interdum eget nunc.</p>
+              <p>rebase.art is a project ipsum dolor sit amet, consectetur adipiscing elit. Praesent ultricies in odio eget bibendum. Donec libero orci, suscipit in tempor ac, interdum eget nunc.</p>
             </div>
             <div className="d-flex justify-content-between align-items-center pb-2 store-info">
               <span>

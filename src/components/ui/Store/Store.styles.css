@@ -186,7 +186,7 @@
     right: 25px;
     z-index: 9999;
     height: 380px;
-    overflow-y: scroll;
+    overflow: scroll;
   }
   #store-home {
     right: 25px;
@@ -273,6 +273,12 @@
   border-radius: 4px;
   padding: 12px 9px;
 }
+
+.arrowup-bg {
+  background: #666666;
+  border-radius: 4px;
+}
+
 .accordion-bg {
   background-color: #EEEEEE !important;
   color: #FFFFFF !important;

@@ -62,8 +62,6 @@ const BackgroundVideoPlayer = (props) => {
   useEffect(() => {
     // replay the current scene
     const playLoopScene = () => {
-      console.log('Loop', loopCount);
-      // DOM handle for the player and wrapper
       const player = document.querySelector(`.${currentScene.player} > video`);
       player.play();
 

@@ -171,17 +171,11 @@ const HomePage = () => {
         <StoreHome  handler={ handleNavMenu } display={ currentContent }/>
         <Stories display={ currentContent } close={ closeContent } handler={ handleNavMenu }/>
         <StoreInDetails display={ currentContent } close={ closeContent } handler={ handleNavMenu }/>
-        {/* <ExitPrevButton handler={ handleExitButton } showExit={ showExitPrev } />
-        <ExitNextButton handler={ handleExitButton } showExit={ showExitNext } /> */}
-        {!((currentContent === 'browseStories'
-        || currentContent === 'store-in-details'
-        || currentContent === 'myStories'
-        || currentContent === 'MystoriesInDetails') && (width <= 768)) && 
-        <Player initialVolume={ 0.6 } stationId={ stationId } display={ currentContent } /> }
         <MystoriesHome handler={ handleNavMenu } display={ currentContent }/>
-        <MyStories display={ currentContent } close={ closeContent } handler={ handleNavMenu } />
+        <MyStories showExitNext={showExitNext} handleExitButton={handleExitButton} display={ currentContent } close={ closeContent } handler={ handleNavMenu } />
         <MyStorieInDetails display={ currentContent } close={ closeContent } handler={ handleNavMenu }/>
         <Search display={ currentContent } close={ closeContent } handler={ handleNavMenu } />
+        <Player initialVolume={ 0.6 } stationId={ stationId } display={ currentContent } /> 
       </div>
       <BackgroundVideoPlayer
         videoSrc={ videoSrc }
