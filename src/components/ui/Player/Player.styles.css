@@ -1,12 +1,20 @@
 .player {
   background: rgba(0, 0, 0, 0.35);
   backdrop-filter: blur(32px);
-  border-radius: 4px;
-  bottom: 32px;
+  border-radius: 8px;
+  bottom: 9rem;
   padding: 8px 12px;
   overflow: hidden;
   position: absolute;
-  width: 288px;
+  width: 90%;
+}
+
+.cursor-pointer {
+  cursor: pointer !important;
+}
+
+.fnt-16 {
+  font-size: 16px !important;
 }
 
 .playerCollapsed {
@@ -15,7 +23,7 @@
 
 .playerExpanded {
   flex-direction: column;
-  height: 187px;
+  height: 300px;
 }
 
 .playerExpanded > .expandedTop {
@@ -38,7 +46,7 @@
 .playerExpanded > .stationForm > div {
   align-items: center;
   display: flex;
-  height: 40px;
+  height: 60px;
   justify-content: flex-start;
   margin-left: 40px;
 }
@@ -73,8 +81,9 @@
 
 @media (min-width: 480px) {
   .player {
-      right: 14px;
-      z-index: 1000;
+    width: 360px;
+    right: 25px;
+    z-index: 1000;
   }
 }
 
