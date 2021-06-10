@@ -10,7 +10,7 @@
   backdrop-filter: blur(32px);
   border-radius: 8px;
   font-size: 16px;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 .mystories {
   font-weight: bold;
@@ -18,21 +18,22 @@
   color: #ffffff;
   line-height: 23px;
 }
- /* My stories style */
-p.artistLink, p.trackLink {
-    color: #fff !important;
+/* My stories style */
+p.artistLink,
+p.trackLink {
+  color: #fff !important;
 }
 .mystories-list .header {
-    display: flex;
-    justify-content: space-between;
-    padding: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 0;
 }
 .mystories-list .header .left {
-    align-items: center;
-    display: flex;
+  align-items: center;
+  display: flex;
 }
 .mystories-list .header .left > span {
-  color: #FFFFFF;
+  color: #ffffff;
   font-weight: bold;
   font-size: 18px;
   line-height: 21px;
@@ -50,6 +51,7 @@ p.artistLink, p.trackLink {
 .store-info {
   font-size: 12px;
   color: #666666;
+  padding-top: 16px;
 }
 /* my stories in details page styles */
 
@@ -58,7 +60,7 @@ p.artistLink, p.trackLink {
   margin: 18px auto;
 }
 .btn-browse-all-stories {
-  background: #FFFFFF !important;
+  background: #ffffff !important;
   border-radius: 8px !important;
   color: rgb(114 57 116) !important;
   font-weight: 900 !important;
@@ -84,4 +86,9 @@ p.artistLink, p.trackLink {
     right: 25px;
     z-index: 1000;
   }
+}
+
+.episodesSelectDiv {
+  overflow: scroll;
+  height: 160px;
 }

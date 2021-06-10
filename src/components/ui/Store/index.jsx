@@ -2,10 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './Store.styles.css';
 
 const StoreHome = ({ display, handler }) => {
-	if (display === 'browseStories' || display === 'store-in-details'
-  || display === 'myStories' || display === 'MystoriesInDetails' && width <= 768) {
-		return null;
-	}
+	
 	const openStores = event => {
     event.preventDefault();
     handler('browseStories');
