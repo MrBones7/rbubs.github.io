@@ -28,8 +28,10 @@ const StoreHome = ({ display, handler }) => {
     };
   }, []);
 
+  let displayNone = (display === 'myStories' || display === 'MystoriesInDetails');
+
   return (
-    <div id="Mystores-home" aria-expanded="false">
+    <div id="Mystores-home" className={`cursor-pointer ${displayNone ? 'd-none' : ''} ${display}`} aria-expanded="false">
       <div className="d-flex align-items-center justify-content-between">
         <div className="d-flex align-items-center"  onClick={openMystories}>
           <svg

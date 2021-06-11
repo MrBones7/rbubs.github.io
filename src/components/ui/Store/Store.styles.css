@@ -169,8 +169,11 @@
   #content-store {
     align-self: center;
     top: 65px;
+    z-index: 999;
   }
 }
+
+.MuiAccordionDetails-root { padding: 8px; }
 
 @media (max-width: 340px) {
   #content-store {
@@ -188,6 +191,9 @@
     height: 380px;
     overflow-y: scroll;
   }
+  #content-store.mystories { 
+    bottom: 9rem;
+  }
   #store-home {
     right: 25px;
     z-index: 999;
@@ -197,6 +203,15 @@
   }
   .desktop-view {
     display: block !important;
+  }
+  #store-home.myStories, #store-home.MystoriesInDetails {
+    bottom: 48rem;
+  }
+  #store-home.station {
+    bottom: 40rem;
+  }
+  .d-none {
+    display: none !important;
   }
 }
 

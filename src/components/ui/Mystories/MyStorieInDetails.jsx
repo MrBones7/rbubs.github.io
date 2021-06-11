@@ -14,7 +14,7 @@ const MyStorieInDetails = ({ display, close, handler }) => {
   };
 
   return (
-    <div id="content-store" className="mystories-list">
+    <div id="content-store" className="mystories-list mystories">
       <div className="header">
         <div className="left">
           <svg
@@ -24,6 +24,7 @@ const MyStorieInDetails = ({ display, close, handler }) => {
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
             onClick={backToStores}
+            className="cursor-pointer"
           >
             <path
               d="M13 3.42857L4.875 12L13 20.5714L11.375 24L8.58275e-07 12L11.375 -1.76529e-06L13 3.42857Z"
@@ -38,6 +39,7 @@ const MyStorieInDetails = ({ display, close, handler }) => {
           viewBox="0 0 32 32"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
+          className="cursor-pointer"
           onClick={close}
         >
           <path

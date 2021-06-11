@@ -28,9 +28,9 @@ const DesktopStorySummary = () => {
           <div className="d-flex px-2 justify-content-center align-items-center">
             <h3 className="m-0 store-titel mr-2">Crypto fisherman with very long name</h3>
             {isOpen ? (
-              <img onClick={toggleOpen} src={Arrow} alt="arrow" className="arrow-bg" />
+              <img onClick={toggleOpen} src={Arrow} alt="arrow" className="arrow-bg cursor-pointer" />
             ) : (
-              <img onClick={toggleOpen} src={ArrowUp} alt="arrowup" className="arrowup-bg" />
+              <img onClick={toggleOpen} src={ArrowUp} alt="arrowup" className="arrowup-bg cursor-pointer" />
             )}
           </div>
           {isOpen ? (
