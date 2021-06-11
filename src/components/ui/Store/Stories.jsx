@@ -1,5 +1,4 @@
 import React from 'react';
-import cardImage from '../../../assets/img/card.svg';
 import StoryDetails from '../StoryDetails';
 import './Store.styles.css';
 
