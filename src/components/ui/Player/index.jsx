@@ -153,10 +153,10 @@ class Player extends React.Component {
               <p className="artistLink fnt-16">Lo-fi</p>
             </div> */}
             <div>
-              <svg onClick={onPause} width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <circle cx="16" cy="16" r="14.5" stroke="white" strokeWidth="3"/>
               </svg>
-              <p className="artistLink fnt-16">Turn off</p>
+              <p className="artistLink fnt-16">Coming Soon...</p>
             </div>
           </div>
 

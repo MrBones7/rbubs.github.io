@@ -154,6 +154,10 @@ p.trackLink {
   text-align: right;
 }
 
+.rightPlayIcon {
+  margin-left: 18px;
+}
+
 /*
 
 ORIGINAL CSS (pre-Lucas)
