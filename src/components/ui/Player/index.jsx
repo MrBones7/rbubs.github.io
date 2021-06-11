@@ -185,7 +185,7 @@ class Player extends React.Component {
 Player.propTypes = {
   initialVolume: PropTypes.number.isRequired,
   stationId: PropTypes.string.isRequired,
-  display: PropTypes.string.isRequired,
+  display: PropTypes.string,
 };
 
 export default Player;

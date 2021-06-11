@@ -186,7 +186,7 @@
     right: 25px;
     z-index: 9999;
     height: 380px;
-    overflow: scroll;
+    overflow-y: scroll;
   }
   #store-home {
     right: 25px;

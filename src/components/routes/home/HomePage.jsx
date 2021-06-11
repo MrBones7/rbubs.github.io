@@ -15,7 +15,6 @@ import Search from '../../ui/Search'
 import Header from '../../ui/Header';
 import ContentAbout from '../../ui/ContentAbout';
 import Player from '../../ui/Player';
-import Row from '../../ui/Row';
 
 // EDIT THESES VALUES TO SETUP NEW VIDEO SETS
 
@@ -168,14 +167,14 @@ const HomePage = () => {
         <Header handler={ handleNavMenu } />
         <Spacer />
         <ContentAbout display={ currentContent } close={ closeContent } />
-        <StoreHome  handler={ handleNavMenu } display={ currentContent }/>
+        <StoreHome currentVideoIndex={ currentVideoIndex } changeVideoIndex={changeVideoIndex}  handler={ handleNavMenu } display={ currentContent }/>
         <Stories display={ currentContent } close={ closeContent } handler={ handleNavMenu }/>
         <StoreInDetails display={ currentContent } close={ closeContent } handler={ handleNavMenu }/>
         <MystoriesHome handler={ handleNavMenu } display={ currentContent }/>
         <MyStories showExitNext={showExitNext} handleExitButton={handleExitButton} display={ currentContent } close={ closeContent } handler={ handleNavMenu } />
         <MyStorieInDetails display={ currentContent } close={ closeContent } handler={ handleNavMenu }/>
         <Search display={ currentContent } close={ closeContent } handler={ handleNavMenu } />
-        <Player initialVolume={ 0.6 } stationId={ stationId } display={ currentContent } /> 
+        <Player  initialVolume={ 0.6 } stationId={ stationId } display={ currentContent } /> 
       </div>
       <BackgroundVideoPlayer
         videoSrc={ videoSrc }
