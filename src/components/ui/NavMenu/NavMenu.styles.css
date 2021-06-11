@@ -15,6 +15,7 @@
 
 #nav-menu-button {
     background: transparent;
+    display: inline !important;
     border: 0;
     height: 21px;
     line-height: 130%;
@@ -26,6 +27,8 @@
 
 #nav-menu-button .nav-icon {
     font-size: 20px;
+    margin-left: 26px;
+    display: inline;
     width: 40px;
 }
 
@@ -114,4 +117,16 @@
 #nav-menu-button[aria-expanded="true"] {
     z-index: 1;
     display: none !important;    
+}
+
+.eyeIcon{
+    margin-bottom: 6px;
+}
+
+.headerContent{
+    margin-left: 60%;
+}
+
+.eyeIconContainer{
+    display: inline;
 }
