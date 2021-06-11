@@ -174,7 +174,7 @@ const HomePage = () => {
         <MyStories showExitNext={showExitNext} handleExitButton={handleExitButton} display={ currentContent } close={ closeContent } handler={ handleNavMenu } />
         <MyStorieInDetails display={ currentContent } close={ closeContent } handler={ handleNavMenu }/>
         <Search display={ currentContent } close={ closeContent } handler={ handleNavMenu } />
-        <Player  initialVolume={ 0.6 } stationId={ stationId } display={ currentContent } /> 
+        <Player  initialVolume={ 0.6 } stationId={ stationId } display={ currentContent } handler={ handleNavMenu } /> 
       </div>
       <BackgroundVideoPlayer
         videoSrc={ videoSrc }

@@ -17,9 +17,9 @@ const StoreHome = ({ display, handler }) => {
       window.removeEventListener('resize', handleWindowSizeChange);
     }
   }, []);
-
+  
 	return (
-		<div id="store-home" className="cursor-pointer" aria-expanded="false" onClick={openStores}>
+		<div id="store-home" className={`cursor-pointer ${display}`} aria-expanded="false" onClick={openStores}>
 			<div className="d-flex align-items-center">
 				<span className="ml-2 mr-3">Open Store</span>
 				<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">

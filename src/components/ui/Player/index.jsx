@@ -50,9 +50,9 @@ class Player extends React.Component {
   }
   
   render() {
-    const { initialVolume, stationId , display} = this.props;
+    const { initialVolume, stationId , display, handler} = this.props;
     const { currentTrack } = this.state;
-    if (display === 'station') {
+    if (display === 'station' && !this.state.expanded) {
       this.checkType();
     }
   
@@ -87,6 +87,11 @@ class Player extends React.Component {
       this.setState({
         expanded: !this.state.expanded
       });
+      if (!this.state.expanded) {
+        handler('station');
+      } else {
+        handler('');
+      }
     }
 
     let expandedClass = this.state.expanded ? 'toggleOpen' : 'toggleClosed';
