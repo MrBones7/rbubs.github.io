@@ -132,6 +132,7 @@
 .eyeIconContainer {
     position: fixed;
     z-index: 99999;
+    top:14px;
     right: 90px;
     font-size: 26px;
     color: #fff;

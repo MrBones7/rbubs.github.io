@@ -89,6 +89,9 @@ p.trackLink {
     right: 25px;
     z-index: 1000;
   }
+  #Mystores-home.station {
+    bottom: 34rem;
+  }
 }
 
 .episodesSelectDiv {
