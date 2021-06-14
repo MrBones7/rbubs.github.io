@@ -70,7 +70,7 @@ const MobileStorySummary = () => {
         </span>
       </div>
       <div className="d-flex px-2 justify-content-center align-items-center">
-        <h3 className="m-0 store-titel mr-2">Crypto fisherman with very long name</h3>
+        <h3 onClick={toggleOpen} className="m-0 store-titel mr-2">Crypto fisherman with very long name</h3>
         {isOpen ? (
           <img onClick={toggleOpen} src={Arrow} alt="arrow" className="arrow-bg" />
         ) : (
