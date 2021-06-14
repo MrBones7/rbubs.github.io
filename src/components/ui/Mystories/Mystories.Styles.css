@@ -1,6 +1,6 @@
 /* my stories home page style */
 #Mystores-home {
-  padding: 8px 16px;
+  padding: 8px 12px;
   position: absolute;
   width: 90%;
   height: 55px;
@@ -74,6 +74,9 @@ p.trackLink {
 }
 .padding-6 {
   padding: 6px !important;
+}
+#Mystores-home.station{ 
+  bottom: 34rem;
 }
 @media (max-width: 479px) {
   #Mystores-home {

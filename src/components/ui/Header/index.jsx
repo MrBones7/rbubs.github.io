@@ -1,11 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Header.styles.css';
 import NavMenu from '../NavMenu';
 import logo from '../../../assets/img/logo.svg';
 
-const Header = ({ handler }) => {
+const Header = ({ handler, isBottomContent, handleIsShowBottomContent }) => {
   const rootUrl = window.location.href;
-
   return (
     <div className="header">
       <div id="logo-wrapper">
@@ -14,7 +13,7 @@ const Header = ({ handler }) => {
         </a>
       </div>
       <div id="nav-menu-wrapper">
-        <NavMenu handler={handler} />
+        <NavMenu isBottomContent={isBottomContent} handleIsShowBottomContent={handleIsShowBottomContent}  handler={handler} />
       </div>
     </div>
   );

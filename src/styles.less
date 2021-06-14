@@ -32,6 +32,7 @@ body {
   flex-direction: column;
   margin: 0;
   font-weight: 500;
+  background-size: cover;
 
   overflow-y: scroll; /* Hide vertical scrollbar */
   overflow-x: hidden; /* Hide horizontal scrollbar */
@@ -65,4 +66,10 @@ a, .hoverable {
 }
 .MuiAccordionSummary-content.Mui-expanded {
   margin: 12px 0 !important;
+}
+
+@media screen and (orientation: landscape) {
+  #store-home {
+    display: none;
+  }
 }

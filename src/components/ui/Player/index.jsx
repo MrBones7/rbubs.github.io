@@ -50,9 +50,9 @@ class Player extends React.Component {
   }
   
   render() {
-    const { initialVolume, stationId , display} = this.props;
+    const { initialVolume, stationId , display, handler} = this.props;
     const { currentTrack } = this.state;
-    if (display === 'station') {
+    if (display === 'station' && !this.state.expanded) {
       this.checkType();
     }
   
@@ -87,6 +87,11 @@ class Player extends React.Component {
       this.setState({
         expanded: !this.state.expanded
       });
+      if (!this.state.expanded) {
+        handler('station');
+      } else {
+        handler('');
+      }
     }
 
     let expandedClass = this.state.expanded ? 'toggleOpen' : 'toggleClosed';
@@ -148,10 +153,10 @@ class Player extends React.Component {
               <p className="artistLink fnt-16">Lo-fi</p>
             </div> */}
             <div>
-              <svg onClick={onPause} width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <circle cx="16" cy="16" r="14.5" stroke="white" strokeWidth="3"/>
               </svg>
-              <p className="artistLink fnt-16">Turn off</p>
+              <p className="artistLink fnt-16">Coming Soon...</p>
             </div>
           </div>
 
