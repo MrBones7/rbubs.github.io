@@ -75,6 +75,9 @@ p.trackLink {
 .padding-6 {
   padding: 6px !important;
 }
+#Mystores-home.station{ 
+  bottom: 34rem;
+}
 @media (max-width: 479px) {
   #Mystores-home {
     align-self: center;
