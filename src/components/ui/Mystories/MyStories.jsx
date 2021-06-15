@@ -9,7 +9,7 @@ const MyStories = ({ display, close, handler }) => {
   }
   const menuSelect = (event) => {
     event.preventDefault();
-    handler(event.currentTarget.id);
+    handler(event.currentTarget.id, false);
   };
 
   return (

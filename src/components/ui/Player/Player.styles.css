@@ -23,7 +23,7 @@
 
 .playerExpanded {
   flex-direction: column;
-  height: 300px;
+  height: 220px;
 }
 
 .playerExpanded > .expandedTop {
@@ -155,7 +155,7 @@ p.trackLink {
 }
 
 .rightPlayIcon {
-  margin-left: 18px;
+  margin-left: 10px;
 }
 
 /*

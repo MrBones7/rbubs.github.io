@@ -3,14 +3,14 @@ import './Mystories.Styles.css';
 import DesktopStorySummary from '../StorySummary/DesktopStorySummary';
 import MobileStorySummary from '../StorySummary/MobileStorySummary';
 
-const MyStorieInDetails = ({ display, close, handler }) => {
-
+const MyStorieInDetails = ({ display, close, handler, isStore }) => {
   if (display !== 'MystoriesInDetails') {
     return null;
   }
   const backToStores = (event) => {
     event.preventDefault();
-    handler('myStories');
+    if (isStore) handler('browseStories');
+    else handler('myStories');
   };
 
   return (
@@ -31,7 +31,7 @@ const MyStorieInDetails = ({ display, close, handler }) => {
               fill="white"
             />
           </svg>
-          <span className="ml-3">Back to my stories</span>
+          <span className="ml-3">{isStore ? 'Back to Store' : 'Back to My Stories'}</span>
         </div>
         <svg
           width="32"
@@ -48,7 +48,7 @@ const MyStorieInDetails = ({ display, close, handler }) => {
           />
         </svg>
       </div>
-     <MobileStorySummary />
+      <MobileStorySummary />
       <DesktopStorySummary />
     </div>
   );

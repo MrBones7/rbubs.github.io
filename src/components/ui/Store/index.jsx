@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './Store.styles.css';
 
-const StoreHome = ({ display, handler }) => {
+const StoreHome = ({ display, handler, isBottomContent }) => {
 	
 	const openStores = event => {
     event.preventDefault();
@@ -19,7 +19,7 @@ const StoreHome = ({ display, handler }) => {
   }, []);
   
 	return (
-		<div id="store-home" className={`cursor-pointer ${display}`} aria-expanded="false" onClick={openStores}>
+		<div style={{visibility : isBottomContent ? 'visible' : 'hidden'}} id="store-home" className={`cursor-pointer ${display}`} aria-expanded="false" onClick={openStores}>
 			<div className="d-flex align-items-center">
 				<span>Open Store</span>
 				<svg className="ml-2" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">

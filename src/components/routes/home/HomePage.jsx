@@ -11,7 +11,7 @@ import StoreInDetails from '../../ui/Store/StoreInDetails';
 import MystoriesHome from '../../ui/Mystories';
 import MyStories from '../../ui/Mystories/MyStories';
 import MyStorieInDetails from '../../ui/Mystories/MyStorieInDetails';
-import Search from '../../ui/Search';
+// import Search from '../../ui/Search';
 import Header from '../../ui/Header';
 import ContentAbout from '../../ui/ContentAbout';
 import Player from '../../ui/Player';
@@ -72,6 +72,8 @@ const HomePage = () => {
   // store index of current video set
   // passed down to background video player as props
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
+
+  const [isStore, setIsStore] = useState(false);
 
   const [isBottomContent, setIsShowBottomContent] = useState(true);
 
@@ -156,11 +158,12 @@ const HomePage = () => {
     }
   };
 
-  const handleNavMenu = (navSelection) => {
+  const handleNavMenu = (navSelection, store) => {
     if (navSelection === 'close') {
       setCurrentContent(null);
     } else {
       setCurrentContent(navSelection);
+      setIsStore(store);
     }
   };
 
@@ -181,37 +184,48 @@ const HomePage = () => {
   return (
     <>
       <div className={cx(fullscreen, ui)}>
-        <Header isBottomContent={isBottomContent} handleIsShowBottomContent={handleIsShowBottomContent} handler={handleNavMenu} />
+        <Header
+          isBottomContent={isBottomContent}
+          handleIsShowBottomContent={handleIsShowBottomContent}
+          handler={handleNavMenu}
+        />
         <Spacer />
         <ContentAbout display={currentContent} close={closeContent} />
         <Stories display={currentContent} close={closeContent} handler={handleNavMenu} />
         <StoreInDetails display={currentContent} close={closeContent} handler={handleNavMenu} />
         <MyStories
+          isBottomContent={isBottomContent}
           showExitNext={showExitNext}
           handleExitButton={handleExitButton}
           display={currentContent}
           close={closeContent}
           handler={handleNavMenu}
         />
-        <MyStorieInDetails display={currentContent} close={closeContent} handler={handleNavMenu} />
-        <Search display={currentContent} close={closeContent} handler={handleNavMenu} />
-        {isBottomContent ? (
-          <>
-            <StoreHome
-              currentVideoIndex={currentVideoIndex}
-              changeVideoIndex={changeVideoIndex}
-              handler={handleNavMenu}
-              display={currentContent}
-            />
-            <MystoriesHome handler={handleNavMenu} display={currentContent} />
-            <Player
-              initialVolume={0.6}
-              stationId={stationId}
-              display={currentContent}
-              handler={handleNavMenu}
-            />{' '}
-          </>
-        ) : null}
+        <MyStorieInDetails
+          isStore={isStore}
+          isBottomContent={isBottomContent}
+          display={currentContent}
+          close={closeContent}
+          handler={handleNavMenu}
+        />
+        {/* <Search display={currentContent} close={closeContent} handler={handleNavMenu} /> */}
+        <StoreHome
+          currentVideoIndex={currentVideoIndex}
+          isBottomContent={isBottomContent}
+          changeVideoIndex={changeVideoIndex}
+          handler={handleNavMenu}
+          isBottomContent={isBottomContent}
+          display={currentContent}
+        />
+        <MystoriesHome isBottomContent={isBottomContent} handler={handleNavMenu} display={currentContent} />
+        <Player
+          isBottomContent={isBottomContent}
+          style={{ visibility: isBottomContent ? 'visible' : 'hidden' }}
+          initialVolume={0.6}
+          stationId={stationId}
+          display={currentContent}
+          handler={handleNavMenu}
+        />{' '}
       </div>
       <BackgroundVideoPlayer
         videoSrc={videoSrc}

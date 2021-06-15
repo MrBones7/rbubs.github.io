@@ -5,6 +5,7 @@ import AccordionDetails from '@material-ui/core/AccordionDetails';
 import Arrow from '../../../../../../assets/img/arrow.svg';
 import { Typography } from '@material-ui/core';
 import '../../../../Mystories/Mystories.Styles.css';
+import cardSmallImage from '../../../../../../assets/img/store_in_details.svg';
 
 const AccordianPanel = ({ owned }) => {
   return (
@@ -36,7 +37,9 @@ const AccordianPanel = ({ owned }) => {
       </AccordionSummary>
       <AccordionDetails className="flex-direction-column">
         <div>
-          <div className="box"></div>
+          <div className="box">
+            <img className="inDetailImg" src={cardSmallImage} />
+          </div>
           <div className="d-flex align-items-center justify-content-between mt-2">
             <span className="label label-primary d-flex justify-content-center align-items-center">
               <svg
