@@ -170,12 +170,17 @@
 @media (max-width: 479px) {
   #content-store {
     align-self: center;
+    height: 70%;
     top: 65px;
     z-index: 999;
   }
+  .mobileStoreCardDiv{
+    height: 450px;
+    overflow-y: scroll;
+  }
   .store-description {
     overflow-y: scroll;
-    height: 500px;
+    height: 450px;
   }
 }
 
