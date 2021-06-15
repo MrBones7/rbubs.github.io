@@ -40,6 +40,7 @@ const AccordianPanel = ({ owned }) => {
           <div className="box">
             <img className="inDetailImg" src={cardSmallImage} />
           </div>
+          <div class="description"><p>rebase.art is a project ipsum dolor sit amet, consectetur adipiscing elit. Praesent ultricies in odio eget bibendum. Donec libero orci, suscipit in tempor ac, interdum eget nunc.</p></div>
           <div className="d-flex align-items-center justify-content-between mt-2">
             <span className="label label-primary d-flex justify-content-center align-items-center">
               <svg

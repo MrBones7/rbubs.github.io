@@ -62,6 +62,7 @@ const EpisodeSummary = ({episodeSummary : { seasonName, episodeName, owned, mint
         </span>
         <span className="label label-primary padding-10 fnt-14">{price} DAI</span>
       </div>
+      <div class="description"><p>rebase.art is a project ipsum dolor sit amet, consectetur adipiscing elit. Praesent ultricies in odio eget bibendum. Donec libero orci, suscipit in tempor ac, interdum eget nunc.</p></div>
     </div>
   );
 };

@@ -51,7 +51,7 @@ TabPanel.propTypes = {
 };
 
 
-const StoreInDetails = ({ display, close, handler }) => {
+const StoreInDetails = ({ display, close, handler, isBottomContent }) => {
   const classes = useStyles();
   const [value, setValue] = React.useState('one');
 
@@ -64,7 +64,7 @@ const StoreInDetails = ({ display, close, handler }) => {
   }
 
   return (
-    <div id="content-store" className="mystories-list">
+    <div style={{visibility : isBottomContent ? 'visible' : 'hidden'}} id="content-store" className="mystories-list">
       <div className="header">
         <div className="left">
           <svg width="13" className="cursor-pointer" height="24" viewBox="0 0 13 24" fill="none" xmlns="http://www.w3.org/2000/svg" onClick={backToStores}>

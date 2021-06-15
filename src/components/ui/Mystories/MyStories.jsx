@@ -3,7 +3,7 @@ import './Mystories.Styles.css';
 import Button from '@material-ui/core/Button';
 import StoryDetails from '../StoryDetails';
 
-const MyStories = ({ display, close, handler }) => {
+const MyStories = ({ display, close, handler,isBottomContent  }) => {
   if (display !== 'myStories') {
     return null;
   }
@@ -13,7 +13,7 @@ const MyStories = ({ display, close, handler }) => {
   };
 
   return (
-    <div id="content-store" className="mystories-list mystories">
+    <div style={{visibility : isBottomContent ? 'visible' : 'hidden'}} id="content-store" className="mystories-list mystories">
       <div className="header">
         <div className="left">
           <svg

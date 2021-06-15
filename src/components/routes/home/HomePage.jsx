@@ -191,8 +191,8 @@ const HomePage = () => {
         />
         <Spacer />
         <ContentAbout display={currentContent} close={closeContent} />
-        <Stories display={currentContent} close={closeContent} handler={handleNavMenu} />
-        <StoreInDetails display={currentContent} close={closeContent} handler={handleNavMenu} />
+        <Stories isBottomContent={isBottomContent} display={currentContent} close={closeContent} handler={handleNavMenu} />
+        <StoreInDetails isBottomContent={isBottomContent} display={currentContent} close={closeContent} handler={handleNavMenu} />
         <MyStories
           isBottomContent={isBottomContent}
           showExitNext={showExitNext}
