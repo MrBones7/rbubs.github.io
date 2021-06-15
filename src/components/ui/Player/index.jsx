@@ -99,7 +99,7 @@ class Player extends React.Component {
 
     return (
       <>
-        <div className={['player', 'playerCollapsed', 'width-auto' , collapsedClass].join(' ')}>
+        <div style={{visibility : this.props.isBottomContent ? 'visible' : 'hidden'}} className={['player', 'playerCollapsed', 'width-auto' , collapsedClass].join(' ')}>
           <PlayerControls
             onPause={ onPause }
             onPlay={ onPlay }

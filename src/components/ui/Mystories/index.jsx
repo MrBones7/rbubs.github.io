@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './Mystories.Styles.css';
 
-const StoreHome = ({ display, handler }) => {
+const StoreHome = ({ display, handler, isBottomContent }) => {
   // if (
   //   display === 'browseStories' ||
   //   display === 'store-in-details' ||
@@ -30,9 +30,11 @@ const StoreHome = ({ display, handler }) => {
 
   let displayNone = display === 'myStories' || display === 'MystoriesInDetails';
 
+
   return (
     <div
       id="Mystores-home"
+      style={{visibility : isBottomContent ? 'visible' : 'hidden'}}
       className={`cursor-pointer ${displayNone ? 'd-none' : ''} ${display}`}
       aria-expanded="false"
     >
@@ -60,8 +62,8 @@ const StoreHome = ({ display, handler }) => {
         <div className="d-flex align-items-center">
           <div className="d-flex align-items-center">
             <svg
-              width="25"
-              height="25"
+              width="32"
+              height="32"
               viewBox="0 0 25 25"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -74,8 +76,8 @@ const StoreHome = ({ display, handler }) => {
           </div>
           <div className="playerIcon rightPlayIcon">
             <svg
-              width="25"
-              height="25"
+              width="32"
+              height="32"
               viewBox="0 0 25 25"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"

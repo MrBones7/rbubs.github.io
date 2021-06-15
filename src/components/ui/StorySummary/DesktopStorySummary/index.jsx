@@ -4,8 +4,11 @@ import cardSmallImage from '../../../../assets/img/card.svg';
 import Arrow from '../../../../assets/img/arrow.svg';
 import ArrowUp from '../../../../assets/img/arrowup.svg';
 import Poster from '../../../../assets/img/poster1.png';
+import { Paper, Tab, Tabs } from '@material-ui/core';
 
 const DesktopStorySummary = () => {
+
+  const [value, setValue] = useState('one');
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleOpen = () => {
@@ -13,7 +16,7 @@ const DesktopStorySummary = () => {
   };
 
   const [episodeSummary, setEpisodeSummary] = useState({
-    seasonName: 'Season 1',
+    seasonName: 'SEASON 1',
     episodeName: '01 - Deep Dive',
     mintedCopies: '034',
     totalCopies: '1000',
@@ -26,11 +29,23 @@ const DesktopStorySummary = () => {
       <div className="d-flex justify-content-between position-relative">
         <div className="w-50">
           <div className="d-flex px-2 justify-content-center align-items-center">
-            <h3 onClick={toggleOpen} className="m-0 store-titel mr-2">Crypto fisherman with very long name</h3>
+            <h3 onClick={toggleOpen} className="m-0 store-titel mr-2">
+              Crypto fisherman with very long name
+            </h3>
             {isOpen ? (
-              <img onClick={toggleOpen} src={Arrow} alt="arrow" className="arrow-bg cursor-pointer" />
+              <img
+                onClick={toggleOpen}
+                src={Arrow}
+                alt="arrow"
+                className="arrow-bg cursor-pointer"
+              />
             ) : (
-              <img onClick={toggleOpen} src={ArrowUp} alt="arrowup" className="arrowup-bg cursor-pointer" />
+              <img
+                onClick={toggleOpen}
+                src={ArrowUp}
+                alt="arrowup"
+                className="arrowup-bg cursor-pointer"
+              />
             )}
           </div>
           {isOpen ? (
@@ -49,6 +64,21 @@ const DesktopStorySummary = () => {
             </span>
             <span className="label label-default">3 seasons</span>
           </div>
+          <Paper square className="box-shadow-none">
+            <Tabs
+              value={value}
+              textColor="primary"
+              indicatorColor="primary"
+              onChange={(event, newValue) => {
+                setValue(newValue);
+              }}
+              aria-label="wrapped label tabs example"
+            >
+              <Tab value="one" label="season 1" />
+              <Tab value="two" label="season 2" />
+              <Tab value="three" label="season 3" />
+            </Tabs>
+          </Paper>
           <div className="episodesSelectDiv">
             <div className="card mt-3 p-0">
               <div className="d-flex justify-content-center align-items-center">

@@ -8,7 +8,8 @@ const Stories = ({ display, close, handler }) => {
   }
 	const menuSelect = event => {
     event.preventDefault();
-    handler(event.currentTarget.id);
+    console.log(event.currentTarget.id);
+    handler(event.currentTarget.id, true);
   }
 
   return (

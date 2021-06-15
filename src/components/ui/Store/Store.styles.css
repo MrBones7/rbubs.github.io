@@ -165,13 +165,17 @@
   left: 50%;
 }
 #store-home.station {
-  bottom: 40rem;
+  bottom: 32rem;
 }
 @media (max-width: 479px) {
   #content-store {
     align-self: center;
     top: 65px;
     z-index: 999;
+  }
+  .store-description {
+    overflow-y: scroll;
+    height: 500px;
   }
 }
 
@@ -184,6 +188,7 @@
 }
 
 @media (min-width: 480px) {
+  
   #content-store {
     top: auto;
     bottom: 15rem;
@@ -195,6 +200,7 @@
   }
   #content-store.mystories { 
     bottom: 9rem;
+    overflow: hidden;
   }
   #store-home {
     right: 25px;
@@ -304,9 +310,13 @@
   text-align: right !important;
 }
 .box {
-  height: 117px;
+  height: 142px;
   background: #C4C4C4;
   border-radius: 4px;
+}
+.inDetailImg {
+  height: 100%;
+  width: 100%;
 }
 .px-12 {
   padding-right: 0 12px;

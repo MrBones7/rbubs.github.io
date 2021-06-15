@@ -76,10 +76,9 @@ const NavMenu = ({ handler, handleIsShowBottomContent, isBottomContent }) => {
         <FontAwesomeIcon onClick={toggleShow} className="eyeIcon" icon={faEye} />
       )}
       </div>
-      <div>
+      <div onClick={openMenu}>
         <button type="button" aria-expanded="false" aria-controls="nav-menu-list" id="nav-menu-button"
-        className="cursor-pointer"
-        onClick={openMenu}>
+        className="cursor-pointer">
           <div className="nav-icon nav-open">
             <svg
               width="33"
