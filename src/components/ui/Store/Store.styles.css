@@ -170,7 +170,7 @@
 @media (max-width: 479px) {
   #content-store {
     align-self: center;
-    height: 70%;
+    height: 70.6%;
     top: 65px;
     z-index: 999;
   }
@@ -192,6 +192,12 @@
   }
 }
 
+.browseStrBtn {
+  position: fixed;
+  bottom: 16px;
+  left: 22%;
+}
+
 @media (min-width: 480px) {
   
   #content-store {
@@ -211,6 +217,7 @@
     right: 25px;
     z-index: 999;
   }
+  
   .mobile-view {
     display: none !important;
   }

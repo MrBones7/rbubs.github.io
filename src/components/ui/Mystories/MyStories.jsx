@@ -14,7 +14,7 @@ const MyStories = ({ display, close, handler,isBottomContent  }) => {
 
   return (
     <div style={{visibility : isBottomContent ? 'visible' : 'hidden'}} id="content-store" className="mystories-list mystories">
-      <div className="header">
+      <div className="header" style={{marginBottom: 8}}>
         <div className="left">
           <svg
             width="32"
@@ -50,7 +50,7 @@ const MyStories = ({ display, close, handler,isBottomContent  }) => {
       <StoryDetails isPlaying={true} menuSelect={menuSelect} isMyStories={true} />
       <StoryDetails isPlaying={false} menuSelect={menuSelect} isMyStories={true} />
       <div className="line-Mystories mobile-view"></div>
-      <div className="mobile-view">
+      <div className="mobile-view browseStrBtn">
         <Button
           onClick={() => handler('browseStories')}
           variant="contained"
