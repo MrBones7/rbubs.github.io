@@ -174,9 +174,18 @@
     top: 65px;
     z-index: 999;
   }
+
+  .storeHome#content-store{
+    padding: 20px 0;
+  }
+
+  .storeHome#content-store .header{
+    padding: 0 20px;
+  }
   .mobileStoreCardDiv{
     height: 450px;
     overflow-y: scroll;
+    padding: 0 20px;
   }
   .store-description {
     overflow-y: scroll;
