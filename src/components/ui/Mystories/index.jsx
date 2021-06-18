@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './Mystories.Styles.css';
 
-const StoreHome = ({ display, handler, isBottomContent }) => {
+const StoreHome = ({ display, handler, isBottomContent, isLandscape }) => {
   // if (
   //   display === 'browseStories' ||
   //   display === 'store-in-details' ||
@@ -12,8 +12,10 @@ const StoreHome = ({ display, handler, isBottomContent }) => {
   // }
 
   const openMystories = (event) => {
-    event.preventDefault();
-    handler('myStories');
+    if(!isLandscape){
+      event.preventDefault();
+      handler('myStories');
+    }
   };
 
   const [width, setWidth] = useState(window.innerWidth);
@@ -34,7 +36,7 @@ const StoreHome = ({ display, handler, isBottomContent }) => {
   return (
     <div
       id="Mystores-home"
-      style={{visibility : isBottomContent ? 'visible' : 'hidden'}}
+      style={{visibility : isBottomContent ? 'visible' : 'hidden', bottom: isLandscape ? '8rem' : ''}}
       className={`cursor-pointer ${displayNone ? 'd-none' : ''} ${display}`}
       aria-expanded="false"
     >

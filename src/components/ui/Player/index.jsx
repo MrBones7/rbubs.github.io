@@ -101,16 +101,13 @@ class Player extends React.Component {
       }
     };
 
-    console.log(this.props)
-
-
     let expandedClass = this.state.expanded ? 'toggleOpen' : 'toggleClosed';
     let collapsedClass = this.state.expanded ? 'toggleClosed' : 'toggleOpen';
 
     return (
       <>
         <div
-          style={{ visibility: this.props.isBottomContent ? 'visible' : 'hidden' }}
+          style={{ visibility: this.props.isBottomContent ? 'visible' : 'hidden',  bottom: this.props.isLandscape ? '2.5rem' : '' }}
           className={['player', 'playerCollapsed', 'width-auto', collapsedClass].join(' ')}
         >
           <PlayerControls
