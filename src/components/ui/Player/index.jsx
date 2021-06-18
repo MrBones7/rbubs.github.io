@@ -53,6 +53,8 @@ class Player extends React.Component {
     const { currentTrack } = this.state;
     if (display === 'station' && !this.state.expanded) {
       this.checkType();
+    }else if(display !== 'station' && this.state.expanded){
+      this.checkType();
     }
 
     const radioSrc = `https://s4.radio.co/${stationId}/listen`;
@@ -98,6 +100,8 @@ class Player extends React.Component {
         handler('');
       }
     };
+
+    console.log(this.props)
 
 
     let expandedClass = this.state.expanded ? 'toggleOpen' : 'toggleClosed';

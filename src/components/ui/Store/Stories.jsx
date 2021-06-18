@@ -13,7 +13,7 @@ const Stories = ({ display, close, handler, isBottomContent }) => {
   }
 
   return (
-    <div style={{visibility : isBottomContent ? 'visible' : 'hidden'}} id="content-store" className="mystories-list">
+    <div style={{visibility : isBottomContent ? 'visible' : 'hidden'}} id="content-store" className="mystories-list storeHome">
       <div className="header" style={{marginBottom: 8}}>
         <div className="left">
           <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
