@@ -73,6 +73,8 @@ const HomePage = () => {
   // passed down to background video player as props
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
 
+  const [isLandscape, setIsLandscape] = useState(false);
+
   const [isStore, setIsStore] = useState(false);
 
   const [isBottomContent, setIsShowBottomContent] = useState(true);
@@ -174,12 +176,23 @@ const HomePage = () => {
   function handleWindowSizeChange() {
     setWidth(window.innerWidth);
   }
+
   useEffect(() => {
     window.addEventListener('resize', handleWindowSizeChange);
     return () => {
       window.removeEventListener('resize', handleWindowSizeChange);
     };
   }, []);
+
+  screen.orientation.onchange = function () {
+    console.log('called initially');
+    // logs 'portrait' or 'landscape'
+    if (screen.orientation.type.match(/\w+/)[0] === 'landscape') {
+      setIsLandscape(true);
+    } else {
+      setIsLandscape(false);
+    }
+  };
 
   return (
     <>
@@ -191,8 +204,18 @@ const HomePage = () => {
         />
         <Spacer />
         <ContentAbout display={currentContent} close={closeContent} />
-        <Stories isBottomContent={isBottomContent} display={currentContent} close={closeContent} handler={handleNavMenu} />
-        <StoreInDetails isBottomContent={isBottomContent} display={currentContent} close={closeContent} handler={handleNavMenu} />
+        <Stories
+          isBottomContent={isBottomContent}
+          display={currentContent}
+          close={closeContent}
+          handler={handleNavMenu}
+        />
+        <StoreInDetails
+          isBottomContent={isBottomContent}
+          display={currentContent}
+          close={closeContent}
+          handler={handleNavMenu}
+        />
         <MyStories
           isBottomContent={isBottomContent}
           showExitNext={showExitNext}
@@ -209,16 +232,24 @@ const HomePage = () => {
           handler={handleNavMenu}
         />
         {/* <Search display={currentContent} close={closeContent} handler={handleNavMenu} /> */}
-        <StoreHome
-          currentVideoIndex={currentVideoIndex}
+        {!isLandscape ? (
+          <StoreHome
+            currentVideoIndex={currentVideoIndex}
+            isBottomContent={isBottomContent}
+            changeVideoIndex={changeVideoIndex}
+            handler={handleNavMenu}
+            isBottomContent={isBottomContent}
+            display={currentContent}
+          />
+        ) : null}
+        <MystoriesHome
+          isLandscape={isLandscape}
           isBottomContent={isBottomContent}
-          changeVideoIndex={changeVideoIndex}
           handler={handleNavMenu}
-          isBottomContent={isBottomContent}
           display={currentContent}
         />
-        <MystoriesHome isBottomContent={isBottomContent} handler={handleNavMenu} display={currentContent} />
         <Player
+          isLandscape={isLandscape}
           isBottomContent={isBottomContent}
           style={{ visibility: isBottomContent ? 'visible' : 'hidden' }}
           initialVolume={0.6}

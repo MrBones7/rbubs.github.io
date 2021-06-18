@@ -14,7 +14,7 @@ const MyStories = ({ display, close, handler,isBottomContent  }) => {
 
   return (
     <div style={{visibility : isBottomContent ? 'visible' : 'hidden'}} id="content-store" className="mystories-list mystories">
-      <div className="header" style={{marginBottom: 8}}>
+      <div className="header" style={{marginBottom: 16}}>
         <div className="left">
           <svg
             width="32"
