@@ -5,7 +5,7 @@ const StoryDetails = ({ isPlaying, menuSelect, isMyStories }) => {
   return (
     <div className="card mt-3" id="MystoriesInDetails" onClick={menuSelect}>
       <div className="d-flex justify-content-center align-items-center">
-        <div className="playing">
+        <div className="playing" style={{height: 70, width: 100}}>
           <img src={cardImage} alt="card" />
           <span className="play-btn mobile-view">
             <svg
