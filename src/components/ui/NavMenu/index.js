@@ -3,10 +3,10 @@ import './NavMenu.styles.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
-const NavMenu = ({ handler, handleIsShowBottomContent, isBottomContent }) => {
+const NavMenu = ({ handler, handleIsShowBottomContent, isBottomContent, isLandscape }) => {
   const [isShow, setIsShow] = useState(isBottomContent);
   const [isShowMenu, setOpenMenu] = useState(false);
-  
+
   useEffect(() => {
     var navButton = document.querySelector('button[aria-expanded]');
     var navMenu = document.querySelector('#nav-menu');
@@ -69,16 +69,24 @@ const NavMenu = ({ handler, handleIsShowBottomContent, isBottomContent }) => {
 
   return (
     <div className="d-flex">
-      <div className="eyeIconContainer cursor-pointer">
-      {!isShow ? (
-        <FontAwesomeIcon onClick={toggleShow} className="eyeIcon" icon={faEyeSlash} />
-      ) : (
-        <FontAwesomeIcon onClick={toggleShow} className="eyeIcon" icon={faEye} />
-      )}
+      <div
+        className="eyeIconContainer cursor-pointer"
+        style={{ right: isLandscape ? '22px' : '90px' }}
+      >
+        {!isShow ? (
+          <FontAwesomeIcon onClick={toggleShow} className="eyeIcon" icon={faEyeSlash} />
+        ) : (
+          <FontAwesomeIcon onClick={toggleShow} className="eyeIcon" icon={faEye} />
+        )}
       </div>
-      <div onClick={openMenu}>
-        <button type="button" aria-expanded="false" aria-controls="nav-menu-list" id="nav-menu-button"
-        className="cursor-pointer">
+      <div style={{ display: isLandscape ? 'none' : 'block' }} onClick={openMenu}>
+        <button
+          type="button"
+          aria-expanded="false"
+          aria-controls="nav-menu-list"
+          id="nav-menu-button"
+          className="cursor-pointer"
+        >
           <div className="nav-icon nav-open">
             <svg
               width="33"
@@ -111,7 +119,12 @@ const NavMenu = ({ handler, handleIsShowBottomContent, isBottomContent }) => {
                   <feOffset dx="1" dy="1" />
                   <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.5 0" />
                   <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow" />
-                  <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape" />
+                  <feBlend
+                    mode="normal"
+                    in="SourceGraphic"
+                    in2="effect1_dropShadow"
+                    result="shape"
+                  />
                 </filter>
               </defs>
             </svg>

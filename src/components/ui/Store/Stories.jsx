@@ -2,7 +2,7 @@ import React from 'react';
 import StoryDetails from '../StoryDetails';
 import './Store.styles.css';
 
-const Stories = ({ display, close, handler, isBottomContent }) => {
+const Stories = ({ display, close, handler, isBottomContent, isLandscape }) => {
   if (display !== 'browseStories') {
     return null;
   }
@@ -11,8 +11,9 @@ const Stories = ({ display, close, handler, isBottomContent }) => {
     handler(event.currentTarget.id, true);
   }
 
+
   return (
-    <div style={{visibility : isBottomContent ? 'visible' : 'hidden'}} id="content-store" className="mystories-list storeHome">
+    <div style={{visibility : isBottomContent ? 'visible' : 'hidden', display: isLandscape ? 'none' : 'block'}} id="content-store" className="mystories-list storeHome">
       <div className="header" style={{marginBottom: 8}}>
         <div className="left">
           <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">

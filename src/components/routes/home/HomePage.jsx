@@ -178,6 +178,12 @@ const HomePage = () => {
   }
 
   useEffect(() => {
+    console.log(screen.orientation)
+    if (screen.orientation.type.match(/\w+/)[0] === 'landscape' && screen.orientation.angle !== 0) {
+      setIsLandscape(true);
+    } else {
+      setIsLandscape(false);
+    }
     window.addEventListener('resize', handleWindowSizeChange);
     return () => {
       window.removeEventListener('resize', handleWindowSizeChange);
@@ -185,10 +191,12 @@ const HomePage = () => {
   }, []);
 
   screen.orientation.onchange = function () {
-    console.log('called initially');
     // logs 'portrait' or 'landscape'
     if (screen.orientation.type.match(/\w+/)[0] === 'landscape') {
       setIsLandscape(true);
+      if(currentContent === 'myStories' || currentContent === 'browseStories'){
+        setCurrentContent(null);
+      }
     } else {
       setIsLandscape(false);
     }
@@ -199,17 +207,19 @@ const HomePage = () => {
       <div className={cx(fullscreen, ui)}>
         <Header
           isBottomContent={isBottomContent}
+          isLandscape={isLandscape}
           handleIsShowBottomContent={handleIsShowBottomContent}
           handler={handleNavMenu}
         />
         <Spacer />
         <ContentAbout display={currentContent} close={closeContent} />
-        <Stories
-          isBottomContent={isBottomContent}
-          display={currentContent}
-          close={closeContent}
-          handler={handleNavMenu}
-        />
+          <Stories
+            isBottomContent={isBottomContent}
+            display={currentContent}
+            close={closeContent}
+            handler={handleNavMenu}
+            isLandscape={isLandscape}
+          />
         <StoreInDetails
           isBottomContent={isBottomContent}
           display={currentContent}
@@ -223,10 +233,12 @@ const HomePage = () => {
           display={currentContent}
           close={closeContent}
           handler={handleNavMenu}
+          isLandscape={isLandscape}
         />
         <MyStorieInDetails
           isStore={isStore}
           isBottomContent={isBottomContent}
+          isLandscape={isLandscape}
           display={currentContent}
           close={closeContent}
           handler={handleNavMenu}
