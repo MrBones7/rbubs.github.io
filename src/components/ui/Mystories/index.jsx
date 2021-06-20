@@ -41,7 +41,7 @@ const StoreHome = ({ display, handler, isBottomContent, isLandscape }) => {
       aria-expanded="false"
     >
       <div className="d-flex align-items-center justify-content-between">
-        <div className="d-flex align-items-center" onClick={openMystories}>
+        <div style={{visibility: display ? 'none' : 'block'}} className="d-flex align-items-center" onClick={openMystories}>
           <svg
             width="32"
             height="32"
