@@ -3,7 +3,7 @@ import './Mystories.Styles.css';
 import DesktopStorySummary from '../StorySummary/DesktopStorySummary';
 import MobileStorySummary from '../StorySummary/MobileStorySummary';
 
-const MyStorieInDetails = ({ display, close, handler, isStore, isBottomContent }) => {
+const MyStorieInDetails = ({ display, close, handler, isStore, isBottomContent, isLandscape }) => {
   if (display !== 'MystoriesInDetails') {
     return null;
   }
@@ -14,7 +14,7 @@ const MyStorieInDetails = ({ display, close, handler, isStore, isBottomContent }
   };
 
   return (
-    <div style={{visibility : isBottomContent ? 'visible' : 'hidden'}} id="content-store" className="mystories-list mystories">
+    <div style={{visibility : isBottomContent ? 'visible' : 'hidden', display: isLandscape ? 'none' : 'block'}} id="content-store" className="mystories-list mystories">
       <div className="header">
         <div className="left">
           <svg

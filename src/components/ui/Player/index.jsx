@@ -48,6 +48,7 @@ class Player extends React.Component {
     this.timer = null;
   }
 
+
   render() {
     const { initialVolume, stationId, display, handler } = this.props;
     const { currentTrack } = this.state;
@@ -154,7 +155,7 @@ class Player extends React.Component {
           </div>
         </div>
 
-        <div className={['player', 'playerExpanded', expandedClass].join(' ')}>
+        <div style={{visibility: this.props.isBottomContent ? 'visible' : 'hidden'}} className={['player', 'playerExpanded', expandedClass].join(' ')}>
           <div className="expandedTop cursor-pointer">
             <svg
               width="32"

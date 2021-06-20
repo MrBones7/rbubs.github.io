@@ -194,7 +194,8 @@ const HomePage = () => {
     // logs 'portrait' or 'landscape'
     if (screen.orientation.type.match(/\w+/)[0] === 'landscape') {
       setIsLandscape(true);
-      if(currentContent === 'myStories' || currentContent === 'browseStories'){
+      console.log(currentContent)
+      if(currentContent === 'myStories' || currentContent === 'browseStories' || currentContent === 'MystoriesInDetails'){
         setCurrentContent(null);
       }
     } else {
