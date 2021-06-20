@@ -178,7 +178,6 @@ const HomePage = () => {
   }
 
   useEffect(() => {
-    console.log(screen.orientation)
     if (screen.orientation.type.match(/\w+/)[0] === 'landscape' && screen.orientation.angle !== 0) {
       setIsLandscape(true);
     } else {
@@ -194,7 +193,6 @@ const HomePage = () => {
     // logs 'portrait' or 'landscape'
     if (screen.orientation.type.match(/\w+/)[0] === 'landscape') {
       setIsLandscape(true);
-      console.log(currentContent)
       if(currentContent === 'myStories' || currentContent === 'browseStories' || currentContent === 'MystoriesInDetails'){
         setCurrentContent(null);
       }
