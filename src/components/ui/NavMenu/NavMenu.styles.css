@@ -129,6 +129,16 @@
     margin-left: 60%;
 }
 
+.addressContainer{
+    position: absolute;
+    right: 140px;
+    top: 13px;
+    color: black;
+    background: white;
+    padding: 2px;
+    border-radius: 10px;
+}
+
 .eyeIconContainer {
     position: fixed;
     top: 14px;
