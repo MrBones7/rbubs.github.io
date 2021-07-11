@@ -1,12 +1,22 @@
 import React from 'react';
-import cardImage from '../../../assets/img/card.svg';
 
-const StoryDetails = ({ isPlaying, menuSelect, isMyStories }) => {
-  return (
-    <div className="card mt-3" id="MystoriesInDetails" onClick={menuSelect}>
+const StoryDetails = ({ isPlaying, menuSelect, isMyStories, storyData }) => {
+  const {
+    fields: {
+      artistName,
+      storyThumbnail,
+      storyName,
+      storyDescription,
+      noOfEpisodes,
+      seasons,
+      status,
+    },
+  } = storyData;
+  return !status ? null : (
+    <div className="card mt-3" id="MystoriesInDetails" onClick={(e) => menuSelect(e, storyData.fields)}>
       <div className="d-flex justify-content-center align-items-center">
-        <div className="playing" style={{height: 70, width: 100}}>
-          <img src={cardImage} alt="card" />
+        <div className="playing" style={{ height: 70, width: 100 }}>
+          <img width="100%" height="100%" src={storyThumbnail[0].url} alt="card" />
           <span className="play-btn mobile-view">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -31,14 +41,18 @@ const StoryDetails = ({ isPlaying, menuSelect, isMyStories }) => {
           </span>
         </div>
         <div className="ml-2 store-info">
-          <p className="m-0 titel mb-2">Crypto fisherman with very long name</p>
+          <p className="m-0 titel mb-2">{storyName}</p>
           <div className="w-100 d-flex align-items-center justify-content-between mt-2">
             <span>
               By
-              <span className="label label-primary ml-1">ABCDEFGHIJ</span>
+              <span className="label label-primary ml-1">{artistName}</span>
             </span>
-            <span className="label label-default desktop-view ml-2">3 seasons</span>
-            <span className="label label-default ml-2 desktop-view">42 Episodes</span>
+            <span className="label label-default desktop-view ml-2">
+              {seasons.length} {seasons.length > 1 ? <>seasons</> : <>season</>}
+            </span>
+            <span className="label label-default ml-2 desktop-view">
+              {noOfEpisodes.length} {noOfEpisodes.length > 1 ? <>Episodes</> : <>Episode</>}
+            </span>
             {isMyStories ? (
               <>
                 {isPlaying ? (

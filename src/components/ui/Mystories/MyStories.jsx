@@ -1,21 +1,49 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './Mystories.Styles.css';
 import Button from '@material-ui/core/Button';
 import StoryDetails from '../StoryDetails';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchStoryDetails, getStoryDetails, setCurrentStory } from '../../../redux/actions';
 
-const MyStories = ({ display, close, handler,isBottomContent, isLandscape  }) => {
+const MyStories = ({ display, close, handler, isBottomContent, isLandscape }) => {
+  const dispatch = useDispatch();
+
+  const { isUserLoading, userData, userStories, storiesLoading } = useSelector(
+    (state) => state.myStories
+  );
+
+  useEffect(() => {
+    if (!isUserLoading && userData.length > 0) {
+      if (userData[0].hasOwnProperty('fields')) {
+        const stories = [...new Set(userData[0].fields.Stories)];
+        stories.map((story) => {
+          dispatch(fetchStoryDetails({ id: story }));
+        });
+      }
+    }
+  }, [userData]);
 
   if (display !== 'myStories') {
     return null;
   }
-  const menuSelect = (event) => {
+
+  const menuSelect = (event, story) => {
+    dispatch(setCurrentStory(story));
+    dispatch(getStoryDetails({ id: story.seasons[0] }));
     event.preventDefault();
     handler(event.currentTarget.id, false);
   };
 
   return (
-    <div style={{visibility : isBottomContent ? 'visible' : 'hidden', display: isLandscape ? 'none' : 'block'}} id="content-store" className="mystories-list mystories">
-      <div className="header" style={{marginBottom: 16}}>
+    <div
+      style={{
+        visibility: isBottomContent ? 'visible' : 'hidden',
+        display: isLandscape ? 'none' : 'block',
+      }}
+      id="content-store"
+      className="mystories-list mystories"
+    >
+      <div className="header" style={{ marginBottom: 16 }}>
         <div className="left">
           <svg
             width="32"
@@ -48,8 +76,13 @@ const MyStories = ({ display, close, handler,isBottomContent, isLandscape  }) =>
           />
         </svg>
       </div>
-      <StoryDetails isPlaying={true} menuSelect={menuSelect} isMyStories={true} />
-      <StoryDetails isPlaying={false} menuSelect={menuSelect} isMyStories={true} />
+      {storiesLoading && userStories.length > 0 ? (
+        <>Loading....</>
+      ) : (
+        userStories.map((storyData, i) => {
+          return <StoryDetails key={i} storyData={storyData} menuSelect={menuSelect} />;
+        })
+      )}
       <div className="line-Mystories mobile-view"></div>
       <div className="mobile-view browseStrBtn">
         <Button

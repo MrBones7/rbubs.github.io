@@ -1,9 +1,49 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import './NavMenu.styles.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import Web3 from 'web3';
+import Web3Modal from 'web3modal';
+import { useDispatch } from 'react-redux';
+import { fetchUser } from '../../../redux/actions';
 
 const NavMenu = ({ handler, handleIsShowBottomContent, isBottomContent, isLandscape }) => {
+  const [address, setAddress] = useState(null);
+  const providerOptions = {
+    injected: {
+      display: {
+        name: 'Injected',
+        description: 'Metamask',
+      },
+      package: null,
+    },
+  };
+
+  let web3Modal = new Web3Modal({
+    network: 'mainnet', // optional
+    providerOptions, // required
+    cachedProvider: true,
+  });
+
+  const dispatch = useDispatch();
+
+  const connect = async () => {
+    const provider = await web3Modal.connect();
+    const web3 = new Web3(provider);
+    const accounts = await web3.eth.getAccounts();
+    if (accounts.length > 0) {
+      setAddress(accounts[0]);
+      dispatch(fetchUser({ address: accounts[0] }));
+    }
+  };
+
+  useEffect(() => {
+    dispatch(fetchUser({ address: address }));
+  }, []);
+  useEffect(() => {
+    connect();
+  }, []);
+
   const [isShow, setIsShow] = useState(isBottomContent);
   const [isShowMenu, setOpenMenu] = useState(false);
 
@@ -69,6 +109,15 @@ const NavMenu = ({ handler, handleIsShowBottomContent, isBottomContent, isLandsc
 
   return (
     <div className="d-flex">
+      {address !== null ? (
+        <div>
+          <span className="addressContainer">{address.substring(0, 10)}...</span>
+        </div>
+      ) : (
+        <span onClick={connect} style={{ position: 'absolute', right: '148px', top: '14px' }}>
+          Connect
+        </span>
+      )}
       <div
         className="eyeIconContainer cursor-pointer"
         style={{ right: isLandscape ? '22px' : '90px' }}

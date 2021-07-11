@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Paper from '@material-ui/core/Paper';
 import Tab from '@material-ui/core/Tab';
 import Tabs from '@material-ui/core/Tabs';
@@ -6,46 +6,30 @@ import cardImage from '../../../../assets/img/store_in_details.svg';
 import Arrow from '../../../../assets/img/arrow.svg';
 import ArrowUp from '../../../../assets/img/arrowup.svg';
 import TabPanelContent from './TabPanelContent.jsx';
-
-const accordians = [
-  [
-    {
-      owned: false,
-    },
-    {
-      owned: true,
-    },
-    {
-      owned: false,
-    },
-  ],
-  [
-    {
-      owned: false,
-    },
-    {
-      owned: false,
-    },
-  ],
-  [
-    {
-      owned: false,
-    },
-  ],
-];
+import { useDispatch, useSelector } from 'react-redux';
+import { getEpisodeDetails, getStoryDetails } from '../../../../redux/actions';
 
 const MobileStorySummary = () => {
-  const [value, setValue] = useState('one');
+  const { currentStory, isStoryLoading, currentSeason, currentEpisode, isEpisodeLoading } =
+    useSelector((state) => state.storeData);
+  const { storyName, artistName, storyDescription, seasons, noOfEpisodes, storyThumbnail } =
+    currentStory;
+
+  const [value, setValue] = useState(seasons[0]);
   const [isOpen, setIsOpen] = useState(false);
+
+  const dispatch = useDispatch();
 
   const toggleOpen = () => {
     setIsOpen(!isOpen);
   };
 
-  return (
+  return isStoryLoading ? (
+    <></>
+  ) : (
     <div className="bg-white store-description p-2 mt-4 mobile-view">
       <div className="playing">
-        <img src={cardImage} alt="image" className="w-100" />
+        <img src={storyThumbnail[0].url} alt="image" className="w-100" />
         <span className="play-btn">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -70,7 +54,9 @@ const MobileStorySummary = () => {
         </span>
       </div>
       <div className="d-flex px-2 justify-content-center align-items-center">
-        <h3 onClick={toggleOpen} className="m-0 store-titel mr-2">Crypto fisherman with very long name</h3>
+        <h3 onClick={toggleOpen} className="m-0 store-titel mr-2">
+          {storyName}
+        </h3>
         {isOpen ? (
           <img onClick={toggleOpen} src={Arrow} alt="arrow" className="arrow-bg" />
         ) : (
@@ -81,19 +67,17 @@ const MobileStorySummary = () => {
       <div className="px-2">
         {isOpen ? (
           <div className="description">
-            <p>
-              rebase.art is a project ipsum dolor sit amet, consectetur adipiscing elit. Praesent
-              ultricies in odio eget bibendum. Donec libero orci, suscipit in tempor ac, interdum
-              eget nunc.
-            </p>
+            <p>{storyDescription}</p>
           </div>
         ) : null}
         <div className="d-flex justify-content-between align-items-center pb-2 store-info">
           <span>
             By
-            <span className="label label-primary ml-1">ABCDEFGHIJ</span>
+            <span className="label label-primary ml-1">{artistName}</span>
           </span>
-          <span className="label label-default">15 episodes</span>
+          <span className="label label-default">
+            {seasons.length} {seasons.length > 1 ? <>seasons</> : <>season</>}
+          </span>
         </div>
         <div>
           <Paper square className="box-shadow-none">
@@ -103,17 +87,16 @@ const MobileStorySummary = () => {
               indicatorColor="primary"
               onChange={(event, newValue) => {
                 setValue(newValue);
+                dispatch(getStoryDetails({ id: newValue }));
               }}
               aria-label="wrapped label tabs example"
             >
-              <Tab value="one" label="season 1" />
-              <Tab value="two" label="season 2" />
-              <Tab value="three" label="season 3" />
+              {seasons.map((season, i) => {
+                return <Tab key={i}  value={season} label={`season ${i + 1}`} />;
+              })}
             </Tabs>
           </Paper>
-          {value === 'one' && <TabPanelContent value={'one'} seasonContent={accordians[0]} />}
-          {value === 'two' && <TabPanelContent value={'two'} seasonContent={accordians[1]} />}
-          {value === 'three' && <TabPanelContent value={'three'} seasonContent={accordians[2]} />}
+          <TabPanelContent value={value} currentSeason={currentSeason} />;
         </div>
       </div>
     </div>
