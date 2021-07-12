@@ -9,7 +9,8 @@ import { Paper, Tab, Tabs } from '@material-ui/core';
 import { getEpisodeDetails, getStoryDetails } from '../../../../redux/actions';
 
 const DesktopStorySummary = () => {
-  const { currentStory, isStoryLoading, currentSeason, currentEpisode, isEpisodeLoading } = useSelector((state) => state.storeData);
+  const { currentStory, isStoryLoading, currentSeason, currentEpisode, isEpisodeLoading } =
+    useSelector((state) => state.storeData);
   const { storyName, artistName, storyDescription, seasons, noOfEpisodes } = currentStory;
 
   const [value, setValue] = useState(seasons[0]);
@@ -31,9 +32,7 @@ const DesktopStorySummary = () => {
     }
   }, [currentSeason]);
 
-  return isStoryLoading ? (
-    <>Loading</>
-  ) : (
+  return (
     <div className="bg-white store-description p-3 mt-4 desktop-view">
       <div className="d-flex justify-content-between position-relative">
         <div className="w-50">
@@ -88,42 +87,52 @@ const DesktopStorySummary = () => {
             </Tabs>
           </Paper>
           <div className="episodesSelectDiv">
-            {currentSeason.fields.Episodes.map((episode, i) => {
-              return (
-                <div onClick={()=>fetchEpisodeDetails(episode)} key={i} className="card mt-3 p-0">
-                  <div className="d-flex justify-content-center align-items-center">
-                    <div className="w-80">
-                      <img
-                        src={currentSeason.fields.thumbnails[i].url}
-                        alt="card"
-                        className="w-100"
-                      />
+            {isStoryLoading ? (
+              <span style={{color: '#666666', fontSize:16, fontWeight:'normal'}}>Loading...</span>
+            ) : (
+              currentSeason.fields.Episodes.map((episode, i) => {
+                return !isStoryLoading ? (
+                  <div
+                    onClick={() => fetchEpisodeDetails(episode)}
+                    key={i}
+                    className="card mt-3 p-0"
+                  >
+                    <div className="d-flex justify-content-center align-items-center">
+                      <div className="w-80">
+                        <img
+                          src={currentSeason.fields.thumbnails[i].url}
+                          alt="card"
+                          className="w-100"
+                        />
+                      </div>
+                      <div className="ml-2 d-flex align-items-center justify-content-between">
+                        <p>
+                          {currentSeason.fields.sceneNames[i]} <br />
+                          0001/9999
+                        </p>
+                        <span className="label label-default ml-4 br-10">playing</span>
+                      </div>
                     </div>
-                    <div className="ml-2 d-flex align-items-center justify-content-between">
-                      <p>
-                        {currentSeason.fields.sceneNames[i]} <br />
-                        0001/9999
-                      </p>
-                      <span className="label label-default ml-4 br-10">playing</span>
+                    <div className="right-arrow right-0">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="13"
+                        height="24"
+                        viewBox="0 0 13 24"
+                        fill="none"
+                      >
+                        <path
+                          d="M1.79841e-06 20.5714L8.125 12L2.99735e-07 3.42857L1.625 -1.42062e-07L13 12L1.625 24L1.79841e-06 20.5714Z"
+                          fill="#666666"
+                        />
+                      </svg>
                     </div>
                   </div>
-                  <div  className="right-arrow right-0">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="13"
-                      height="24"
-                      viewBox="0 0 13 24"
-                      fill="none"
-                    >
-                      <path
-                        d="M1.79841e-06 20.5714L8.125 12L2.99735e-07 3.42857L1.625 -1.42062e-07L13 12L1.625 24L1.79841e-06 20.5714Z"
-                        fill="#666666"
-                      />
-                    </svg>
-                  </div>
-                </div>
-              );
-            })}
+                ) : (
+                  <>Loading...</>
+                );
+              })
+            )}
           </div>
         </div>
         <div className="vertical-line"></div>

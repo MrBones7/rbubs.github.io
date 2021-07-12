@@ -24,9 +24,7 @@ const MobileStorySummary = () => {
     setIsOpen(!isOpen);
   };
 
-  return isStoryLoading ? (
-    <></>
-  ) : (
+  return (
     <div className="bg-white store-description p-2 mt-4 mobile-view">
       <div className="playing">
         <img src={storyThumbnail[0].url} alt="image" className="w-100" />
@@ -92,11 +90,11 @@ const MobileStorySummary = () => {
               aria-label="wrapped label tabs example"
             >
               {seasons.map((season, i) => {
-                return <Tab key={i}  value={season} label={`season ${i + 1}`} />;
+                return <Tab key={i} value={season} label={`season ${i + 1}`} />;
               })}
             </Tabs>
           </Paper>
-          <TabPanelContent value={value} currentSeason={currentSeason} />;
+          {isStoryLoading ? <span style={{color: '#666666', fontSize:16, fontWeight:'normal'}}>Loading...</span> : <TabPanelContent value={value} currentSeason={currentSeason} />}
         </div>
       </div>
     </div>
