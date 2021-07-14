@@ -179,7 +179,19 @@
 #store-home.station {
   bottom: 32rem;
 }
+
+.storeCardDiv{
+  overflow-y: scroll;
+  height: 300px;
+}
 @media (max-width: 479px) {
+  .myStoriesStoreBtn{
+    display: none !important;
+  }
+  .titel {
+    font-size: 14px;
+    line-height: 16px;
+  }
   #content-store {
     align-self: center;
     height: 70.6%;
@@ -210,6 +222,10 @@
 }
 
 @media (max-width: 340px) {
+
+  .myStoriesStoreBtn{
+    display: none !important;
+  }
   #content-store {
     padding: 10px;
   }
@@ -221,19 +237,36 @@
   left: 22%;
 }
 
+.storeConnetWallet{
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    margin: 0 auto;
+    text-align: center;
+    top: 50%;
+    font-size: 24px;
+    font-weight: 500;
+}
+
 @media (min-width: 480px) {
+  
   #content-store {
     top: auto;
     bottom: 15rem;
     width: 650px;
     right: 25px;
     z-index: 9999;
-    height: 380px;
-    overflow-y: scroll;
+    /* height: 380px;
+    overflow-y: scroll; */
+  }
+  .myStoriesStoreBtn{
+    margin-right: 20px !important;
   }
   #content-store.mystories {
     bottom: 9rem;
     overflow: hidden;
+    height: 384px;
   }
   #store-home {
     right: 25px;
@@ -286,10 +319,14 @@
 .w-50 {
   width: 48%;
 }
+.textBlue{
+  color: #9346c7;
+}
 .store-titel {
   font-size: 18px;
   color: #9346c7;
   line-height: 21px;
+  width: 100%;
 }
 .card {
   display: flex;
@@ -306,9 +343,10 @@
   cursor: pointer;
 }
 .titel {
-  font-size: 14px;
-  line-height: 16px;
+  font-size: 18px;
+  line-height: 26px;
   color: #9346c7;
+  
 }
 .store-description {
   border-radius: 4px;
@@ -371,4 +409,9 @@
 }
 .MuiTab-root {
   min-width: 72px !important;
+}
+
+.storyDetailsContent{
+  height: 270px;
+  overflow-y: scroll;
 }

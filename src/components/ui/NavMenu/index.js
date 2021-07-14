@@ -40,9 +40,17 @@ const NavMenu = ({ handler, handleIsShowBottomContent, isBottomContent, isLandsc
   useEffect(() => {
     dispatch(fetchUser({ address: address }));
   }, []);
+
+  const disconnect = async () => {
+    const provider = await web3Modal.connect();
+    provider.on('disconnect', (res) => {
+      console.log(res);
+    });
+  }
+
   useEffect(() => {
     connect();
-  }, []);
+  }, [address]);
 
   const [isShow, setIsShow] = useState(isBottomContent);
   const [isShowMenu, setOpenMenu] = useState(false);
@@ -109,18 +117,24 @@ const NavMenu = ({ handler, handleIsShowBottomContent, isBottomContent, isLandsc
 
   return (
     <div className="d-flex">
-      {address !== null ? (
-        <div>
-          <span className="addressContainer">{address.substring(0, 10)}...</span>
-        </div>
-      ) : (
-        <span onClick={connect} style={{ position: 'absolute', right: '148px', top: '14px' }}>
-          Connect
-        </span>
-      )}
+      {/* <button onClick={disconnect}>disconnect</button> */}
+      <button
+        onClick={connect}
+        style={{
+          position: 'absolute',
+          right: '274px',
+          top: '12px',
+          marginRight: 0,
+          display: isShowMenu ? 'none' : 'block',
+        }}
+        className="connectBtn displayNone"
+        type="button"
+      >
+        {address !== null ? <>{address.substring(0, 6)}...</> : <>Connect</>}
+      </button>
       <div
-        className="eyeIconContainer cursor-pointer"
-        style={{ right: isLandscape ? '22px' : '90px' }}
+        className="eyeIconContainer cursor-pointer displayNone"
+        style={{ right: isLandscape ? '22px' : '162px', display: isShowMenu ? 'none' : 'block' }}
       >
         {!isShow ? (
           <FontAwesomeIcon onClick={toggleShow} className="eyeIcon" icon={faEyeSlash} />
@@ -128,6 +142,7 @@ const NavMenu = ({ handler, handleIsShowBottomContent, isBottomContent, isLandsc
           <FontAwesomeIcon onClick={toggleShow} className="eyeIcon" icon={faEye} />
         )}
       </div>
+
       <div style={{ display: isLandscape ? 'none' : 'block' }} onClick={openMenu}>
         <button
           type="button"
@@ -181,8 +196,29 @@ const NavMenu = ({ handler, handleIsShowBottomContent, isBottomContent, isLandsc
         </button>
         <nav id="nav-menu" role="menu" className={`${isShowMenu ? 'width-250' : ''}`}>
           <ol id="nav-menu-list" hidden>
-            <li>
-              <a className="nav-item" role="menuitem" id="close" onClick={menuSelect}>
+            <li className="primaryLi">
+              <button onClick={connect} className="connectBtn" type="button">
+                {address !== null ? <>{address.substring(0, 6)}...</> : <>Connect</>}
+              </button>
+              {!isShow ? (
+                <FontAwesomeIcon
+                  onClick={toggleShow}
+                  className="eyeIcon primaryLiEyeBtn"
+                  icon={faEyeSlash}
+                />
+              ) : (
+                <FontAwesomeIcon
+                  onClick={toggleShow}
+                  className="eyeIcon primaryLiEyeBtn"
+                  icon={faEye}
+                />
+              )}
+              <a
+                className="nav-item primaryCloseBtn"
+                role="menuitem"
+                id="close"
+                onClick={menuSelect}
+              >
                 close
                 <svg
                   width="32"
