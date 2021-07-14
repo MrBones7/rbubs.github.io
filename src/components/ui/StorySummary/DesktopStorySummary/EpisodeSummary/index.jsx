@@ -12,9 +12,9 @@ const EpisodeSummary = ({ episodeSummary, isEpisodeLoading }) => {
         {episodeSummary.fields.sceneName}
       </p>
       <div className="storyDetailsContent">
-        <div className="playing">
+        <div className="episodeSummaryImg">
           <img src={episodeSummary.fields.thumbnail[0].url} alt="image" className="w-100" />
-          <span className="play-btn">
+          <span className="mint-btn">
           <img src={Mint} alt="mint"></img>
           </span>
         </div>

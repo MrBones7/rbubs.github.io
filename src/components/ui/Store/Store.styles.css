@@ -415,3 +415,8 @@
   height: 270px;
   overflow-y: scroll;
 }
+
+.episodeSummaryImg{
+  height: 160px;
+  width: 267px;
+}
