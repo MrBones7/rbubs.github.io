@@ -49,6 +49,14 @@ p.trackLink {
   transform: translate(-50%, -50%);
 }
 
+.mint-btn{
+  cursor: pointer;
+  position: absolute;
+  top: 42%;
+  left: 74%;
+  transform: translate(-50%, -50%);
+}
+
 /* my stories in details page styles */
 
 .line-Mystories {
