@@ -417,6 +417,7 @@
 }
 
 .episodeSummaryImg{
+  position: relative;
   height: 160px;
   width: 267px;
 }
