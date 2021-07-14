@@ -48,11 +48,7 @@ p.trackLink {
   left: 50%;
   transform: translate(-50%, -50%);
 }
-.store-info {
-  font-size: 12px;
-  color: #666666;
-  padding-top: 16px;
-}
+
 /* my stories in details page styles */
 
 .line-Mystories {
@@ -82,7 +78,9 @@ p.trackLink {
   #Mystores-home {
     align-self: center;
   }
-  
+  .store-info {
+    padding-top: 16px;
+  }
 }
 @media (min-width: 480px) {
   #Mystores-home {
@@ -92,7 +90,13 @@ p.trackLink {
   }
 }
 
-.episodesSelectDiv {
-  overflow: scroll;
-  height: 160px;
+.store-info {
+  font-size: 12px;
+  color: #666666;
+  padding-top: 0;
+}
+
+.playing{
+  height: 58px;
+  width: 94px;
 }

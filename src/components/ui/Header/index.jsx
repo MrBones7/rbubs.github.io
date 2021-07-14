@@ -9,7 +9,7 @@ const Header = ({ handler, isBottomContent, handleIsShowBottomContent, isLandsca
     <div className="header">
       <div id="logo-wrapper">
         <a href={rootUrl} id="home-logo">
-          <img src={logo} alt="logo"></img>
+          <img className="mainLogo" src={logo} alt="logo"></img>
         </a>
       </div>
       <div id="nav-menu-wrapper">

@@ -4,12 +4,43 @@
     height: auto;
     text-align: right;
     width: 0;
-    margin-top: 30px;
     z-index: 9999;
 }
 .width-250 {
-    width: 250px !important;
+    width: 360px !important;
 }
+
+.primaryLi{
+    display: inline-block;
+    width: 100%;
+    text-align: left !important;
+}
+
+.connectBtn{
+    margin-right: 71px;
+    padding: 8px 17px;
+    border-radius: 35px;
+    border: 1px solid #ffffff;
+    background: none;
+    color: #fff;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.primaryLiEyeBtn{
+    display: inline-block;
+    vertical-align: middle;
+    width: 29px !important;
+    height: 26px !important;
+}
+
+.primaryCloseBtn{
+    vertical-align: middle;
+    width: auto !important;
+    float: right;
+    background: none;
+}
+
 
 [hidden] { 
     border: 0;
@@ -54,12 +85,13 @@
 }
 
 #nav-menu ol > li {
-    padding: 6px 12px;
+    padding: 16px 18px;
     text-align: right;
 }
 
 #nav-menu ol > li:first-child {
     padding-top: 12px;
+    padding-bottom: 0px;
 }
 
 #nav-menu ol > li.nav-rule {
@@ -131,7 +163,7 @@
 
 .addressContainer{
     position: absolute;
-    right: 140px;
+    right: 265px;
     top: 13px;
     color: black;
     background: white;
@@ -150,8 +182,12 @@
     height: 29px;
     text-align: center;
 }
-@media (max-width: 479px) {
-    .eyeIconContainer{
-        right: 90px;
+@media (max-width: 768px) {
+    #nav-menu{
+        left: -119px;
+        position: relative;
+    }
+    .displayNone{
+        display: none !important;
     }
 }

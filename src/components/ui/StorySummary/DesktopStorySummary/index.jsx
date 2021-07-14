@@ -36,7 +36,7 @@ const DesktopStorySummary = () => {
     <div className="bg-white store-description p-3 mt-4 desktop-view">
       <div className="d-flex justify-content-between position-relative">
         <div className="w-50">
-          <div className="d-flex px-2 justify-content-center align-items-center">
+          <div className="d-flex px-2">
             <h3 onClick={toggleOpen} className="m-0 store-titel mr-2">
               {storyName}
             </h3>
@@ -56,6 +56,7 @@ const DesktopStorySummary = () => {
               />
             )}
           </div>
+          <div className="storyDetailsContent">
           {isOpen ? (
             <div className="description">
               <p>{storyDescription}</p>
@@ -134,6 +135,7 @@ const DesktopStorySummary = () => {
               })
             )}
           </div>
+        </div>
         </div>
         <div className="vertical-line"></div>
         <EpisodeSummary episodeSummary={currentEpisode} isEpisodeLoading={isEpisodeLoading} />

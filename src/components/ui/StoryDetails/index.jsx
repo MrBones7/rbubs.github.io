@@ -15,7 +15,7 @@ const StoryDetails = ({ isPlaying, menuSelect, isMyStories, storyData }) => {
   return !status ? null : (
     <div className="card mt-3" id="MystoriesInDetails" onClick={(e) => menuSelect(e, storyData.fields)}>
       <div className="d-flex justify-content-center align-items-center">
-        <div className="playing" style={{ height: 70, width: 100 }}>
+        <div className="playing">
           <img width="100%" height="100%" src={storyThumbnail[0].url} alt="card" />
           <span className="play-btn mobile-view">
             <svg

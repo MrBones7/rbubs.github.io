@@ -66,7 +66,7 @@ const Stories = ({ display, close, handler, isBottomContent, isLandscape }) => {
           />
         </svg>
       </div>
-      <div className="mobileStoreCardDiv">
+      <div className="mobileStoreCardDiv storeCardDiv">
         {isLoading ? (
           <>Loading....</>
         ) : (

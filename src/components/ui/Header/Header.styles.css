@@ -17,9 +17,14 @@
     padding: 16px 25px;
   }
 }
+@media (max-width: 480px) {
+  .mainLogo {
+    width: 120px;
+  }
+}
 
 #home-logo {
   font-size: 2rem;
   font-weight: bold;
   height: 35px;
-} 
+}
