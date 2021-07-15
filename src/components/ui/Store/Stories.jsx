@@ -4,7 +4,7 @@ import { getStore, getStoryDetails, setCurrentStory } from '../../../redux/actio
 import StoryDetails from '../StoryDetails';
 import './Store.styles.css';
 
-const Stories = ({ display, close, handler, isBottomContent, isLandscape }) => {
+const Stories = ({ display, close, handler, isBottomContent, isLandscape, isStore }) => {
   const dispatch = useDispatch();
   const { isLoading, storeDetails, currentStory } = useSelector((state) => state.storeData);
   useEffect(() => {
@@ -71,7 +71,7 @@ const Stories = ({ display, close, handler, isBottomContent, isLandscape }) => {
           <>Loading....</>
         ) : (
           storeDetails.map((storyData, i) => {
-            return <StoryDetails key={i} storyData={storyData} menuSelect={menuSelect} />;
+            return <StoryDetails isStore={isStore} key={i} storyData={storyData} menuSelect={menuSelect} />;
           })
         )}
       </div>

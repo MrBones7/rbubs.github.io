@@ -25,10 +25,10 @@ TabPanel.propTypes = {
   value: PropTypes.any.isRequired,
 };
 
-const TabPanelContent = ({ value, currentSeason }) => {
+const TabPanelContent = ({ value, currentSeason, isStore }) => {
   return (
     <TabPanel value={value} index={value} className="tabs-bg bg-white">
-      <AccordianPanel currentSeason={currentSeason}/>;
+      <AccordianPanel isStore={isStore} key={value} currentSeason={currentSeason}/>;
     </TabPanel>
   );
 };

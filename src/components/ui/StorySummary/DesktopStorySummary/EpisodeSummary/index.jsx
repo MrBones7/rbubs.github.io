@@ -1,21 +1,27 @@
 import React from 'react';
 import Mint from '../../../../../assets/img/mint.svg';
+import Play from '../../../../../assets/img/play.svg';
 
-const EpisodeSummary = ({ episodeSummary, isEpisodeLoading }) => {
+const EpisodeSummary = ({ episodeSummary, isEpisodeLoading, isStore }) => {
   return isEpisodeLoading ? (
     <>Loading</>
   ) : (
     <div className="w-50">
       <p className="namet m-0">
-        <span className="textBlue">{episodeSummary.fields.seasonName}</span>
-        <br />
-        {episodeSummary.fields.sceneName}
+        <p className="textBlue d-flex ">
+          <span>{episodeSummary.fields.seasonName}{' '}</span>
+          <span className="label label-default">
+            minted: <br />
+            {10}/{99}
+          </span>
+        </p>
+        <span>{episodeSummary.fields.sceneName}</span>
       </p>
       <div className="storyDetailsContent">
         <div className="episodeSummaryImg">
           <img src={episodeSummary.fields.thumbnail[0].url} alt="image" className="w-100" />
           <span className="mint-btn">
-          <img src={Mint} alt="mint"></img>
+            {isStore ? <img src={Mint} alt="mint" /> : <img src={Play} alt="play" />}
           </span>
         </div>
         <div className="d-flex align-items-center justify-content-between mt-2">
@@ -37,10 +43,10 @@ const EpisodeSummary = ({ episodeSummary, isEpisodeLoading }) => {
               10
             </span>
           </span>
-          <span className="label label-default text-right w-80">
+          {/* <span className="label label-default text-right w-80">
             minted: <br />
             {10}/{99}
-          </span>
+          </span> */}
           <span className="label label-primary padding-10 fnt-14">
             {episodeSummary.fields.price} ETH
           </span>
