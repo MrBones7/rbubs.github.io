@@ -2,55 +2,10 @@ import React, { useCallback, useEffect, useState } from 'react';
 import './NavMenu.styles.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
-import Web3 from 'web3';
-import Web3Modal from 'web3modal';
-import { useDispatch } from 'react-redux';
-import { fetchUser } from '../../../redux/actions';
 
-const NavMenu = ({ handler, handleIsShowBottomContent, isBottomContent, isLandscape }) => {
-  const [address, setAddress] = useState(null);
-  const providerOptions = {
-    injected: {
-      display: {
-        name: 'Injected',
-        description: 'Metamask',
-      },
-      package: null,
-    },
-  };
 
-  let web3Modal = new Web3Modal({
-    network: 'mainnet', // optional
-    providerOptions, // required
-    cachedProvider: true,
-  });
-
-  const dispatch = useDispatch();
-
-  const connect = async () => {
-    const provider = await web3Modal.connect();
-    const web3 = new Web3(provider);
-    const accounts = await web3.eth.getAccounts();
-    if (accounts.length > 0) {
-      setAddress(accounts[0]);
-      dispatch(fetchUser({ address: accounts[0] }));
-    }
-  };
-
-  useEffect(() => {
-    dispatch(fetchUser({ address: address }));
-  }, []);
-
-  const disconnect = async () => {
-    const provider = await web3Modal.connect();
-    provider.on('disconnect', (res) => {
-      console.log(res);
-    });
-  }
-
-  useEffect(() => {
-    connect();
-  }, [address]);
+const NavMenu = ({ handler, handleIsShowBottomContent, isBottomContent, isLandscape, connect, address }) => {
+  
 
   const [isShow, setIsShow] = useState(isBottomContent);
   const [isShowMenu, setOpenMenu] = useState(false);
@@ -134,7 +89,7 @@ const NavMenu = ({ handler, handleIsShowBottomContent, isBottomContent, isLandsc
       </button>
       <div
         className="eyeIconContainer cursor-pointer displayNone"
-        style={{ right: isLandscape ? '22px' : '162px', display: isShowMenu ? 'none' : 'block' }}
+        style={{ right: isLandscape ? '22px' : '144px', display: isShowMenu ? 'none' : 'block' }}
       >
         {!isShow ? (
           <FontAwesomeIcon onClick={toggleShow} className="eyeIcon" icon={faEyeSlash} />

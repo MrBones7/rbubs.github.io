@@ -30,8 +30,7 @@ const StoreHome = ({ display, handler, isBottomContent, isLandscape }) => {
     };
   }, []);
 
-  let displayNone = display === 'myStories' || display === 'MystoriesInDetails';
-
+  let displayNone = display === 'myStories';
 
   return (
     <div

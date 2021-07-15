@@ -121,7 +121,7 @@ class Player extends React.Component {
             initialVolume={this.state.volume}
           />
           <PlayerInfo currentTrack={currentTrack} />
-          <div className="cursor-pointer">
+          {/* <div className="cursor-pointer">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="32"
@@ -136,7 +136,7 @@ class Player extends React.Component {
                 fill="white"
               />
             </svg>
-          </div>
+          </div> */}
           <div className="playerIcon cursor-pointer" onClick={toggleExpanded}>
             <svg
               width="32"

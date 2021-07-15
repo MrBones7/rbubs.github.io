@@ -15,6 +15,10 @@ import MyStorieInDetails from '../../ui/Mystories/MyStorieInDetails';
 import Header from '../../ui/Header';
 import ContentAbout from '../../ui/ContentAbout';
 import Player from '../../ui/Player';
+import Web3 from 'web3';
+import Web3Modal from 'web3modal';
+import { useDispatch } from 'react-redux';
+import { fetchUser } from '../../../redux/actions';
 
 // EDIT THESES VALUES TO SETUP NEW VIDEO SETS
 
@@ -76,6 +80,50 @@ const HomePage = () => {
   const [isLandscape, setIsLandscape] = useState(false);
 
   const [isStore, setIsStore] = useState(false);
+
+  const [address, setAddress] = useState(null);
+  const providerOptions = {
+    injected: {
+      display: {
+        name: 'Injected',
+        description: 'Metamask',
+      },
+      package: null,
+    },
+  };
+
+  let web3Modal = new Web3Modal({
+    network: 'mainnet', // optional
+    providerOptions, // required
+    cachedProvider: true,
+  });
+
+  const dispatch = useDispatch();
+
+  const connect = async () => {
+    const provider = await web3Modal.connect();
+    const web3 = new Web3(provider);
+    const accounts = await web3.eth.getAccounts();
+    if (accounts.length > 0) {
+      setAddress(accounts[0]);
+      dispatch(fetchUser({ address: accounts[0] }));
+    }
+  };
+
+  useEffect(() => {
+    dispatch(fetchUser({ address: address }));
+  }, []);
+
+  const disconnect = async () => {
+    const provider = await web3Modal.connect();
+    provider.on('disconnect', (res) => {
+      console.log(res);
+    });
+  };
+
+  useEffect(() => {
+    connect();
+  }, [address]);
 
   const [isBottomContent, setIsShowBottomContent] = useState(true);
 
@@ -193,7 +241,11 @@ const HomePage = () => {
     // logs 'portrait' or 'landscape'
     if (screen.orientation.type.match(/\w+/)[0] === 'landscape') {
       setIsLandscape(true);
-      if(currentContent === 'myStories' || currentContent === 'browseStories' || currentContent === 'MystoriesInDetails'){
+      if (
+        currentContent === 'myStories' ||
+        currentContent === 'browseStories' ||
+        currentContent === 'MystoriesInDetails'
+      ) {
         setCurrentContent(null);
       }
     } else {
@@ -206,31 +258,36 @@ const HomePage = () => {
       <div className={cx(fullscreen, ui)}>
         <Header
           isBottomContent={isBottomContent}
+          address={address}
+          connect={connect}
           isLandscape={isLandscape}
           handleIsShowBottomContent={handleIsShowBottomContent}
           handler={handleNavMenu}
         />
         <Spacer />
         <ContentAbout display={currentContent} close={closeContent} />
-          <Stories
-            isBottomContent={isBottomContent}
-            display={currentContent}
-            close={closeContent}
-            handler={handleNavMenu}
-            isLandscape={isLandscape}
-          />
-        <StoreInDetails
+        <Stories
+          isBottomContent={isBottomContent}
+          display={currentContent}
+          close={closeContent}
+          isStore={isStore}
+          handler={handleNavMenu}
+          isLandscape={isLandscape}
+        />
+        {/* <StoreInDetails
           isBottomContent={isBottomContent}
           display={currentContent}
           close={closeContent}
           handler={handleNavMenu}
-        />
+        /> */}
         <MyStories
+          isConnected={address !== null}
           isBottomContent={isBottomContent}
           showExitNext={showExitNext}
           handleExitButton={handleExitButton}
           display={currentContent}
           close={closeContent}
+          isStore={isStore}
           handler={handleNavMenu}
           isLandscape={isLandscape}
         />

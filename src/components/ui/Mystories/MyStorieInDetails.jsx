@@ -13,8 +13,18 @@ const MyStorieInDetails = ({ display, close, handler, isStore, isBottomContent, 
     else handler('myStories');
   };
 
+  console.log(isStore)
+
   return (
-    <div style={{visibility : isBottomContent ? 'visible' : 'hidden', display: isLandscape ? 'none' : 'block'}} id="content-store" className="mystories-list mystories">
+    <div
+      style={{
+        visibility: isBottomContent ? 'visible' : 'hidden',
+        display: isLandscape ? 'none' : 'block',
+        bottom: isStore ? '15rem' : '9rem',
+      }}
+      id="content-store"
+      className="mystories-list mystories"
+    >
       <div className="header">
         <div className="left">
           <svg
@@ -48,8 +58,8 @@ const MyStorieInDetails = ({ display, close, handler, isStore, isBottomContent, 
           />
         </svg>
       </div>
-      <MobileStorySummary />
-      <DesktopStorySummary />
+      <MobileStorySummary isStore={isStore}/>
+      <DesktopStorySummary isStore={isStore} />
     </div>
   );
 };

@@ -9,7 +9,7 @@ import { Paper, Tab, Tabs } from '@material-ui/core';
 import { getEpisodeDetails, getStoryDetails } from '../../../../redux/actions';
 
 const DesktopStorySummary = () => {
-  const { currentStory, isStoryLoading, currentSeason, currentEpisode, isEpisodeLoading } =
+  const { currentStory, isStoryLoading, currentSeason, currentEpisode, isEpisodeLoading, isStore } =
     useSelector((state) => state.storeData);
   const { storyName, artistName, storyDescription, seasons, noOfEpisodes } = currentStory;
 
@@ -36,7 +36,7 @@ const DesktopStorySummary = () => {
     <div className="bg-white store-description p-3 mt-4 desktop-view">
       <div className="d-flex justify-content-between position-relative">
         <div className="w-50">
-          <div className="d-flex px-2">
+          <div className="d-flex">
             <h3 onClick={toggleOpen} className="m-0 store-titel mr-2">
               {storyName}
             </h3>
@@ -138,7 +138,7 @@ const DesktopStorySummary = () => {
         </div>
         </div>
         <div className="vertical-line"></div>
-        <EpisodeSummary episodeSummary={currentEpisode} isEpisodeLoading={isEpisodeLoading} />
+        <EpisodeSummary isStore={isStore} episodeSummary={currentEpisode} isEpisodeLoading={isEpisodeLoading} />
       </div>
     </div>
   );
