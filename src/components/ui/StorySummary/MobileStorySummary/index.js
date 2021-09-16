@@ -30,7 +30,7 @@ const MobileStorySummary = ({ isStore }) => {
       <div className="episodeSummaryImg">
         <img src={storyThumbnail[0].url} alt="image" className="w-100" />
         <span className="mint-btn">
-          {isStore ? <img src={Mint} alt="mint" /> : <img src={Play} alt="play" />}
+          {isStore ? <img src={Mint} alt="mint" width="50px" /> : <img src={Play} alt="play" width="50px" />}
         </span>
       </div>
       <div className="d-flex px-2 justify-content-center align-items-center">

@@ -21,7 +21,7 @@ const EpisodeSummary = ({ episodeSummary, isEpisodeLoading, isStore }) => {
         <div className="episodeSummaryImg">
           <img src={episodeSummary.fields.thumbnail[0].url} alt="image" className="w-100" />
           <span className="mint-btn">
-            {isStore ? <img src={Mint} alt="mint" /> : <img src={Play} alt="play" />}
+            {isStore ? <img src={Mint} alt="mint" width="50px" /> : <img src={Play} alt="play"  width="50px"/>}
           </span>
         </div>
         <div className="d-flex align-items-center justify-content-between mt-2">

@@ -1,6 +1,9 @@
 .bg-white {
   background-color: #ffffff !important;
 }
+.line-height-1 {
+  line-height: 1;
+}
 .w-100 {
   width: 100%;
 }
@@ -229,6 +232,9 @@
   #content-store {
     padding: 10px;
   }
+  .label {
+    font-size: 10px !important;
+  }
 }
 
 .browseStrBtn {
@@ -422,7 +428,7 @@
 
 .episodeSummaryImg{
   position: relative;
-  height: 160px;
-  width: 280px;
+  width: 100%;
+  height: auto;
   margin-bottom: 10px;
 }

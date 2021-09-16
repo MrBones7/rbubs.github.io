@@ -24,7 +24,7 @@ const StoryDetails = ({ isPlaying, menuSelect, isMyStories, storyData, isStore }
         <div className="playing">
           <img width="100%" height="100%" src={storyThumbnail[0].url} alt="card" />
           <span className="play-btn mobile-view">
-            {isStore ? <img src={Mint} alt="mint"></img> : <img src={Play} alt="play"></img>}
+            {isStore ? <img src={Mint} alt="mint" width="50px"></img> : <img src={Play} alt="play" width="50px"></img>}
           </span>
         </div>
         <div className="ml-2 store-info">

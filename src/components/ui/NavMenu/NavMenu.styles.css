@@ -1,3 +1,6 @@
+html {
+    scroll-behavior: smooth;
+}
 /* NavMenu */
 #nav-menu {
     display: block;
@@ -11,13 +14,12 @@
 }
 
 .primaryLi{
-    display: inline-block;
     width: 100%;
-    text-align: left !important;
+    display: flex;
+    justify-content: space-between;
 }
 
 .connectBtn{
-    margin-right: 71px;
     padding: 8px 17px;
     border-radius: 35px;
     border: 1px solid #ffffff;
@@ -183,11 +185,27 @@
     text-align: center;
 }
 @media (max-width: 768px) {
+    .displayNone{
+        display: none !important;
+    }
+}
+@media (max-width: 596px) {
     #nav-menu{
-        left: -119px;
         position: relative;
+        right: 25%;
+        top: 30px;
     }
     .displayNone{
         display: none !important;
+    }
+}
+@media (max-width: 380px) {
+    #nav-menu{
+        width: 300px !important;
+    }
+}
+@media (max-width: 325px) {
+    #nav-menu{
+        right: 42%;
     }
 }
