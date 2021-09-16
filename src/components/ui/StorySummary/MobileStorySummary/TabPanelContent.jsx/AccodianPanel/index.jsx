@@ -65,7 +65,7 @@ const AccordianPanel = ({ currentSeason, isStore }) => {
               <div className="box" style={{position: 'relative'}}>
                 <img className="inDetailImg" src={currentEpisode.fields.thumbnail[0].url} />
                 <span className="mint-btn">
-                  {isStore ? <img src={Mint} alt="mint" /> : <img src={Play} alt="play" />}
+                  {isStore ? <img src={Mint} alt="mint" width="50px" /> : <img src={Play} alt="play"  width="50px"/>}
                 </span>
               </div>
               <div className="description">

@@ -99,7 +99,7 @@ const DesktopStorySummary = () => {
                     className="card mt-3 p-0"
                   >
                     <div className="d-flex justify-content-center align-items-center">
-                      <div className="w-80">
+                      <div className="w-80 d-flex align-items-center">
                         <img
                           src={currentSeason.fields.thumbnails[i].url}
                           alt="card"
@@ -107,7 +107,7 @@ const DesktopStorySummary = () => {
                         />
                       </div>
                       <div className="ml-2 d-flex align-items-center justify-content-between">
-                        <p>
+                        <p className="m-0 line-height-1">
                           {currentSeason.fields.sceneNames[i]} <br />
                           0001/9999
                         </p>
